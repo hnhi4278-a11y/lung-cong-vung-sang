@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mức chịu trách nhiệm 300k Thanh Sang</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#667085; --line:#d8dee8; --soft:#f6f8fb; --bad:#b42318; --bad-bg:#fff1f0; --brand:#14558f; --warn:#a15c07; --warn-bg:#fff7e6; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,sans-serif; color:var(--ink); background:#f3f5f8; }
+    header { background:#fff; border-bottom:1px solid var(--line); }
+    main { max-width:1320px; margin:0 auto; padding:18px; }
+    h1 { margin:0; padding:22px 18px 6px; font-size:32px; letter-spacing:0; }
+    h2 { margin:22px 0 10px; font-size:22px; }
+    p { margin:6px 0; color:var(--muted); }
+    .subhead { padding:0 18px 22px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:12px 0; }
+    .metric { border:1px solid var(--line); border-radius:8px; padding:12px; background:#fff; min-height:82px; color:var(--muted); font-size:13px; font-weight:700; }
+    .metric b { display:block; margin-top:8px; font-size:25px; color:var(--ink); }
+    .metric.warn { border-color:#f7d08a; background:var(--warn-bg); }
+    .metric.warn b { color:var(--warn); }
+    .rules { padding:12px 14px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--brand); border-radius:8px; line-height:1.45; }
+    .panel { background:#fff; border:1px solid var(--line); border-radius:8px; padding:14px; margin-top:12px; }
+    .filters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:10px 0; }
+    label { display:grid; gap:6px; color:var(--muted); font-size:13px; font-weight:700; }
+    select { width:100%; min-height:38px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; background:#fff; color:var(--ink); font:inherit; }
+    table { width:100%; border-collapse:separate; border-spacing:0; font-size:14px; background:#fff; }
+    th,td { border-bottom:1px solid var(--line); padding:9px 8px; text-align:left; vertical-align:top; }
+    th { background:#f8fafc; color:#344054; position:sticky; top:0; z-index:1; font-size:13px; }
+    tr.alert-row td { background:var(--bad-bg); }
+    tr:hover td { background:#eef4ff; }
+    .num { text-align:right; font-variant-numeric:tabular-nums; }
+    .fine { color:var(--bad); font-weight:700; text-align:right; white-space:nowrap; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:8px; max-height:640px; }
+    .summary-grid { display:grid; grid-template-columns:0.7fr 1.3fr; gap:12px; }
+    @media (max-width:980px) { .grid,.filters,.summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } h1 { font-size:26px; } th,td { padding:7px 6px; font-size:12px; } }
+    @media (max-width:640px) { .grid,.filters,.summary-grid { grid-template-columns:1fr; } main { padding:12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Báo cáo mức chịu trách nhiệm 300k vùng Thanh Sang</h1>
+    <p class="subhead">Kỳ dữ liệu: 2026-06-05 đến 2026-06-14 · Cập nhật: 2026-06-16 19:39:56</p>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="metric">Dòng trách nhiệm<b>9</b></div>
+      <div class="metric">Nhân sự liên quan<b>7</b></div>
+      <div class="metric">Salon phát sinh<b>2</b></div>
+      <div class="metric warn">Tổng mức chịu trách nhiệm<b>2.700.000đ</b></div>
+    </section>
+    <p class="rules">Nguồn đúng: Power BI bảng <b>Nhân sự thiếu công</b>, cột <b>Mức chịu trách nhiệm</b>. Báo cáo này tách riêng khỏi báo cáo lủng công 100k và có tên nhân sự cụ thể.</p>
+
+    <section class="summary-grid">
+      <div class="panel">
+        <h2>Tóm tắt theo salon</h2>
+        <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Dòng</th><th class="fine">Trách nhiệm</th></tr></thead><tbody><tr><td>575 AC</td><td class='num'>1</td><td class='fine'>300.000đ</td></tr>
+<tr><td>927 HG</td><td class='num'>8</td><td class='fine'>2.400.000đ</td></tr></tbody></table></div>
+      </div>
+      <div class="panel">
+        <h2>Chi tiết nhân sự</h2>
+        <div class="filters">
+          <label>Ngày<select id="dateFilter"><option value="">Tất cả</option><option value='2026-06-05'>2026-06-05</option>
+<option value='2026-06-07'>2026-06-07</option>
+<option value='2026-06-13'>2026-06-13</option>
+<option value='2026-06-14'>2026-06-14</option></select></label>
+          <label>Salon<select id="salonFilter"><option value="">Tất cả</option><option value='575 AC'>575 AC</option>
+<option value='927 HG'>927 HG</option></select></label>
+          <label>Vị trí<select id="positionFilter"><option value="">Tất cả</option><option value='Skinner'>Skinner</option>
+<option value='Stylist'>Stylist</option></select></label>
+          <label>Mức<select id="amountFilter"><option value="">Tất cả</option><option value="300000">300.000đ</option></select></label>
+        </div>
+        <p id="filterSummary" class="rules"></p>
+        <div class="table-wrap"><table><thead><tr><th>StaffName</th><th>Vị trí</th><th>Ngày</th><th>Thứ</th><th>Salon</th><th class="num">Năng suất salon/vị trí</th><th class="num">Giờ đăng ký</th><th class="num">Giờ đã chấm</th><th class="num">Ngày công chấm - đăng ký</th><th class="num">Thợ đăng ký</th><th class="num">Thợ thực tế</th><th class="num">Chênh lệch</th><th class="fine">Mức chịu trách nhiệm</th></tr></thead><tbody id="detailRows"></tbody></table></div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const rows = [{"Ngay": "2026-06-05", "Thu": "Thứ sáu", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "19735", "StaffName": "Cao Thị Kim Chi", "Vi_tri": "Skinner", "Nang_suat_salon_vi_tri": "14.14", "Gio_cong_dang_ky": "13.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "10", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-3", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-05", "Thu": "Thứ sáu", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "13120", "StaffName": "Hồ Thị Trúc Tâm", "Vi_tri": "Skinner", "Nang_suat_salon_vi_tri": "14.14", "Gio_cong_dang_ky": "12.5", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "10", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-3", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-05", "Thu": "Thứ sáu", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "11055", "StaffName": "Thạch Thị Chanh Đa", "Vi_tri": "Skinner", "Nang_suat_salon_vi_tri": "14.14", "Gio_cong_dang_ky": "12.5", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "10", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-3", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-05", "Thu": "Thứ sáu", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "5866", "StaffName": "Đỗ Thị Linh", "Vi_tri": "Skinner", "Nang_suat_salon_vi_tri": "14.14", "Gio_cong_dang_ky": "12.5", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "10", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-3", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-07", "Thu": "Chủ nhật", "Salon_ID": "21", "Salon": "575 AC", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT08 - Quận 3,10, Tân Bình, Tân Phú", "Staff_Id": "5507", "StaffName": "Đặng Minh Phúc", "Vi_tri": "Stylist", "Nang_suat_salon_vi_tri": "16.0", "Gio_cong_dang_ky": "11.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "7", "So_tho_di_lam_thuc_te": "6", "Chenh_lech_so_tho": "-1", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-13", "Thu": "Thứ bảy", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "20816", "StaffName": "Nguyễn Hồng Phúc", "Vi_tri": "Stylist", "Nang_suat_salon_vi_tri": "15.14", "Gio_cong_dang_ky": "9.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "9", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-2", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-13", "Thu": "Thứ bảy", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "3503", "StaffName": "Trần Nhất Duyên", "Vi_tri": "Stylist", "Nang_suat_salon_vi_tri": "15.14", "Gio_cong_dang_ky": "9.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "9", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-2", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-14", "Thu": "Chủ nhật", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "20816", "StaffName": "Nguyễn Hồng Phúc", "Vi_tri": "Stylist", "Nang_suat_salon_vi_tri": "18.14", "Gio_cong_dang_ky": "9.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "9", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-2", "Muc_chiu_trach_nhiem": "300000"}, {"Ngay": "2026-06-14", "Thu": "Chủ nhật", "Salon_ID": "22", "Salon": "927 HG", "RSM": "Nguyễn Thanh Sang GDKV", "RSM_Zone": "TT06 - Q10,11,5,6, Bình Chánh, Bình Tân", "Staff_Id": "3503", "StaffName": "Trần Nhất Duyên", "Vi_tri": "Stylist", "Nang_suat_salon_vi_tri": "18.14", "Gio_cong_dang_ky": "9.0", "Gio_cong_da_cham": "", "Ngay_cong_cham_tru_dang_ky": "-1.0", "Gio_cong_cham_tru_dang_ky": "", "Ty_le_gio_cong_cham_dang_ky": "", "So_tho_dang_ky": "9", "So_tho_di_lam_thuc_te": "7", "Chenh_lech_so_tho": "-2", "Muc_chiu_trach_nhiem": "300000"}];
+    const money = value => `${Number(value || 0).toLocaleString('vi-VN')}đ`;
+    const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const controls = ['dateFilter', 'salonFilter', 'positionFilter', 'amountFilter'].map(id => document.getElementById(id));
+    const tbody = document.getElementById('detailRows');
+    const summary = document.getElementById('filterSummary');
+    function render() {
+      const [date, salon, position, amount] = controls.map(control => control.value);
+      const filtered = rows.filter(row =>
+        (!date || row.Ngay === date) &&
+        (!salon || row.Salon === salon) &&
+        (!position || row.Vi_tri === position) &&
+        (!amount || String(row.Muc_chiu_trach_nhiem) === amount)
+      );
+      const total = filtered.reduce((sum, row) => sum + Number(row.Muc_chiu_trach_nhiem || 0), 0);
+      summary.textContent = `${filtered.length} dòng · Tổng mức chịu trách nhiệm ${money(total)}`;
+      tbody.innerHTML = filtered.map(row => `<tr class="alert-row">
+        <td>${esc(row.StaffName)}</td>
+        <td>${esc(row.Vi_tri)}</td>
+        <td>${esc(row.Ngay)}</td>
+        <td>${esc(row.Thu)}</td>
+        <td>${esc(row.Salon)}</td>
+        <td class="num">${esc(row.Nang_suat_salon_vi_tri)}</td>
+        <td class="num">${esc(row.Gio_cong_dang_ky)}</td>
+        <td class="num">${esc(row.Gio_cong_da_cham)}</td>
+        <td class="num">${esc(row.Ngay_cong_cham_tru_dang_ky)}</td>
+        <td class="num">${esc(row.So_tho_dang_ky)}</td>
+        <td class="num">${esc(row.So_tho_di_lam_thuc_te)}</td>
+        <td class="num">${esc(row.Chenh_lech_so_tho)}</td>
+        <td class="fine">${money(row.Muc_chiu_trach_nhiem)}</td>
+      </tr>`).join('');
+    }
+    controls.forEach(control => control.addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

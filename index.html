@@ -52,7 +52,7 @@
 <body>
   <header>
     <h1>Báo cáo cảnh báo lủng công vùng Thanh Sang</h1>
-    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-16 · Cập nhật: 2026-06-16 19:25:10 · 9 salon</p>
+    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-16 · Cập nhật: 2026-06-16 19:39:56 · 9 salon</p>
   </header>
   <main>
     <section class="topline">
@@ -69,9 +69,8 @@
       <div class="metric critical">Phạt tỷ lệ NS<b>2 dòng</b></div>
       <div class="metric critical">Tiền phạt tỷ lệ NS<b>200.000đ</b></div>
       <div class="metric critical">Tổng phạt chung<b>2.100.000đ</b></div>
-      <div class="metric warn">Mức chịu trách nhiệm<b>600.000đ</b></div>
     </section>
-    <p class="rules">- Nguồn đúng: Power BI mục <b>Tổng hợp chấm công</b>, cột <b>Năng suất khách/thợ/ngày</b> và <b>Tỷ lệ Nhân sự Thực tế trong tuần (c/e)</b>.<br>- Năng suất vượt mốc phạt 100.000đ. Nếu cùng salon/ngày cả Stylist và Skinner đều vượt thì tổng phạt chỉ tính 100.000đ.<br>- Tỷ lệ nhân sự thực tế: Thứ 2-6 dưới 50%, Thứ 7-CN dưới 80% phạt 100.000đ/dòng. <b>Mức chịu trách nhiệm: 300.000đ/dòng</b>.</p>
+    <p class="rules">- Nguồn đúng: Power BI mục <b>Tổng hợp chấm công</b>, cột <b>Năng suất khách/thợ/ngày</b> và <b>Tỷ lệ Nhân sự Thực tế trong tuần (c/e)</b>.<br>- Năng suất vượt mốc phạt 100.000đ. Nếu cùng salon/ngày cả Stylist và Skinner đều vượt thì tổng phạt chỉ tính 100.000đ.<br>- Tỷ lệ nhân sự thực tế: Thứ 2-6 dưới 50%, Thứ 7-CN dưới 80% phạt 100.000đ/dòng.</p>
     <section class="summary-grid">
       <div class="panel">
         <h2>Tóm tắt phạt năng suất theo salon</h2>
@@ -86,7 +85,7 @@
       </div>
       <div class="panel">
         <h2>Tóm tắt phạt tỷ lệ nhân sự</h2>
-        <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Số dòng phạt</th><th class="fine">Phạt</th><th class="fine">Trách nhiệm</th></tr></thead><tbody><tr style='background:#ede9fe'><td>927 HG</td><td class='num'>2</td><td class='fine'>200.000đ</td><td class='fine'>600.000đ</td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Số dòng phạt</th><th class="fine">Phạt</th></tr></thead><tbody><tr style='background:#ede9fe'><td>927 HG</td><td class='num'>2</td><td class='fine'>200.000đ</td></tr></tbody></table></div>
       </div>
     </section>
     <section class="panel">
@@ -156,7 +155,7 @@
       <label>Bộ phận<select id="ratioRoleFilter"><option value="">Tất cả</option><option value="Stylist">Stylist</option><option value="Skinner">Skinner</option></select></label>
     </div>
     <p id="ratioFilterSummary" class="rules"></p>
-    <div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Thứ</th><th>Salon</th><th>Bộ phận</th><th class="num">Tỷ lệ thực tế (c/e)</th><th class="num">Mốc</th><th class="num">Tỷ lệ chấm công (a/e)</th><th>Trạng thái</th><th class="fine">Phạt</th><th class="fine">Trách nhiệm</th><th>Ghi chú</th></tr></thead><tbody id="ratioDetailRows"></tbody></table></div>
+    <div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Thứ</th><th>Salon</th><th>Bộ phận</th><th class="num">Tỷ lệ thực tế (c/e)</th><th class="num">Mốc</th><th class="num">Tỷ lệ chấm công (a/e)</th><th>Trạng thái</th><th class="fine">Phạt</th><th>Ghi chú</th></tr></thead><tbody id="ratioDetailRows"></tbody></table></div>
     </section>
   </main>
   <script>
@@ -208,7 +207,7 @@
       );
       const fine = filtered.reduce((sum, row) => sum + Number(row.Tien_phat || 0), 0);
       const countFine = filtered.filter(row => row.Trang_thai === 'PHAT').length;
-      ratioSummary.textContent = `${filtered.length} dòng · ${countFine} dòng phạt · Tổng phạt ${money(fine)} · Mức chịu trách nhiệm ${money(countFine * 300000)}`;
+      ratioSummary.textContent = `${filtered.length} dòng · ${countFine} dòng phạt · Tổng phạt ${money(fine)}`;
       ratioTbody.innerHTML = filtered.map(row => {
         const isFine = row.Trang_thai === 'PHAT';
         const ratio = row.Ty_le_nhan_su_thuc_te_tuan === '' ? '' : `${esc(row.Ty_le_nhan_su_thuc_te_tuan)}%`;
@@ -223,7 +222,6 @@
           <td class="num">${chamCong}</td>
           <td><span class="chip ${isFine ? 'bad-chip' : 'ok-chip'}">${isFine ? 'Có phạt' : 'Không phạt'}</span></td>
           <td class="fine">${money(row.Tien_phat)}</td>
-          <td class="fine">${isFine ? money(300000) : money(0)}</td>
           <td>${esc(row.Ghi_chu || '')}</td>
         </tr>`;
       }).join('');
