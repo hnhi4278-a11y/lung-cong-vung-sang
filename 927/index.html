@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>927 HG - Báo Cáo Nhân Sự T6</title>
+  <style>
+    :root { --bg:#f5f7fb; --ink:#1f2937; --muted:#667085; --line:#e2e8f0; --card:#fff; --amber:#f59e0b; --red:#dc2626; --green:#16a34a; --blue:#2563eb; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+    .page { max-width:1500px; margin:0 auto; padding:24px; }
+    header { display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:16px; }
+    h1 { margin:0 0 8px; font-size:30px; }
+    h2 { margin:0; font-size:20px; }
+    .muted, .sub, td span, li span { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14px 0; }
+    .card, section { background:var(--card); border:1px solid var(--line); border-radius:8px; box-shadow:0 1px 2px rgba(15,23,42,.04); }
+    .card { padding:15px; }
+    .label { color:var(--muted); font-size:12px; font-weight:850; text-transform:uppercase; margin-bottom:7px; }
+    .value { font-size:27px; font-weight:900; font-variant-numeric:tabular-nums; }
+    .note { background:#fffbeb; border:1.5px solid var(--amber); padding:20px; font-size:18px; line-height:1.6; }
+    .note-title { color:#c2410c; font-size:15px; font-weight:900; letter-spacing:3px; margin-bottom:8px; }
+    .mini { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:14px 0; }
+    section { padding:16px; margin-top:14px; }
+    ul { margin:10px 0 0; padding-left:20px; line-height:1.65; }
+    li span { display:block; font-size:13px; margin-top:2px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { padding:10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { position:sticky; top:0; z-index:1; background:#f8fafc; color:#475569; font-size:12px; text-transform:uppercase; }
+    .table-wrap { max-height:760px; overflow:auto; border:1px solid var(--line); border-radius:8px; margin-top:12px; }
+    .num { text-align:right; font-variant-numeric:tabular-nums; }
+    .salary, .target { background:#fff7ed; font-weight:850; }
+    .target { color:#9a3412; }
+    .kpi { background:#ecfdf5; color:#166534; font-weight:900; }
+    .aov { background:#eff6ff; color:#1d4ed8; font-weight:900; }
+    .tag { display:inline-flex; border-radius:999px; padding:5px 10px; font-size:12px; font-weight:850; white-space:nowrap; }
+    .tag.risk { background:#fee2e2; color:#991b1b; }
+    .tag.warn { background:#fef3c7; color:#92400e; }
+    .tag.ok { background:#dcfce7; color:#166534; }
+    .tag.lead { background:#dbeafe; color:#1e40af; }
+    .locked { display:grid; gap:12px; max-width:430px; }
+    .password-row { display:flex; gap:10px; }
+    input { width:100%; border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:15px; }
+    button { border:0; border-radius:8px; background:#1f2937; color:#fff; padding:10px 14px; font-weight:850; cursor:pointer; }
+    .error { color:#b91c1c; font-weight:750; min-height:20px; }
+    #supContent { display:none; }
+    @media (max-width:960px) { .page { padding:14px; } header { display:block; } .grid, .mini { grid-template-columns:1fr; } .note { font-size:16px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>927 HG - Báo Cáo Nhân Sự T6</h1>
+        <div class="sub">Một trang gọn: lấy AOV làm mốc đánh giá sale, kết hợp khách và doanh thu để giao việc từng người.</div>
+      </div>
+      <div class="muted">Build: 2026-06-17 14:19:08<br>Nguồn: salon_671_927_20260617_140159 / salary_927_20260617_141146</div>
+    </header>
+
+    <div class="grid">
+      <div class="card"><div class="label">KPI T6</div><div class="value">977.653.741</div><div class="muted">3.869 khách x AOV 252.689</div></div>
+      <div class="card"><div class="label">DT hiện tại</div><div class="value">420.623.860</div><div class="muted">1.636 khách · AOV 257.105</div></div>
+      <div class="card"><div class="label">KPI NS +10%</div><div class="value">1.419.107.280</div><div class="muted">Còn thiếu 716.592.441</div></div>
+      <div class="card"><div class="label">DT/ngày cần</div><div class="value">39.787.849</div><div class="muted">Còn 14 ngày</div></div>
+    </div>
+
+    <section class="note">
+      <div class="note-title">GÓC NHÌN QUẢN LÝ</div>
+      <p>927 đang có <b>1.636</b> khách, còn cần <b>2.233</b> khách để về KPI salon. KPI từng nhân sự đang tính theo doanh thu T5 của từng bạn cộng thêm <b>10%</b> tăng trưởng hợp lý; bảng bên dưới có thêm KPI T6 và DT/ngày cần để từng bạn tự bám mục tiêu.</p>
+    </section>
+
+    <div class="mini">
+      <section><h2>Đang Gánh DT</h2><ul><li><b>Võ Văn Trí</b><span>57.448.721 DT · 212 khách</span></li><li><b>PHÙ THỊ HOÀNG UYÊN</b><span>49.166.252 DT · 169 khách</span></li><li><b>Nguyễn Thị Thúy Hằng</b><span>48.582.161 DT · 172 khách</span></li><li><b>Phạm Văn Phát</b><span>45.715.095 DT · 170 khách</span></li><li><b>Nguyễn Hoàng Kha</b><span>45.484.522 DT · 193 khách</span></li></ul></section>
+      <section><h2>AOV Cao</h2><ul><li><b>Trần Nhất Duyên</b><span>AOV 466.051 · 72 khách · AOV cao, thiếu khách</span></li><li><b>Đỗ Thị Linh</b><span>AOV 407.034 · 36 khách · AOV cao, thiếu khách</span></li><li><b>Thạch Thị Chanh Đa</b><span>AOV 303.849 · 36 khách · AOV cao, thiếu khách</span></li><li><b>PHÙ THỊ HOÀNG UYÊN</b><span>AOV 290.925 · 169 khách · AOV cao + khách tốt</span></li><li><b>Nguyễn Thị Thúy Hằng</b><span>AOV 282.454 · 172 khách · AOV cao + khách tốt</span></li></ul></section>
+      <section><h2>Cần Push SP</h2><ul><li><b>Nguyễn Thị Thúy Hằng</b><span>CR SP 1,7% · SP 1.675.000</span></li><li><b>Nguyễn Hoàng Kha</b><span>CR SP 1,6% · SP 1.291.000</span></li><li><b>Nguyễn Hoàng Triệu Vy</b><span>CR SP 0,6% · SP 269.000</span></li><li><b>Trương Phúc Tỷ</b><span>CR SP 0,6% · SP 452.000</span></li><li><b>Ngô Thuỳ Phương</b><span>CR SP 0,0% · SP 0</span></li></ul></section>
+    </div>
+
+    <section>
+      <h2>Bảng Chính: Push + Hiệu Suất</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nhân sự</th><th>Ưu tiên</th><th class="num">DT hiện tại</th><th class="num">DT dự tính</th><th class="num">KPI T6</th><th class="num">KPI/ngày cần</th><th class="num">DT cần theo lương</th><th class="num">DT/ngày lương</th><th class="num">Khách</th><th class="num">AOV</th><th>Đánh giá AOV</th><th class="num">CR SP</th><th class="num">Lương dự tính T6</th><th>Việc cần push</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td><b>Nguyễn Chí Khanh</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag risk">Nâng AOV</span></td>
+          <td class="num">32.639.657</td>
+          <td class="num">61.199.357</td>
+          <td class="num kpi">63.814.541</td>
+          <td class="num kpi">2.226.777</td>
+          <td class="num target">53.165.667</td>
+          <td class="num target">1.466.144</td>
+          <td class="num">151</td>
+          <td class="num aov">216.157</td>
+          <td><span class="tag risk">AOV thấp</span><br><span>Ưu tiên kèm sale: combo, topup, dịch vụ cộng thêm.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">9.569.820</td>
+          <td>AOV thấp hơn mốc, cần kèm cách tư vấn combo/topup và dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Hồng Phúc</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag risk">Nâng AOV</span></td>
+          <td class="num">13.222.989</td>
+          <td class="num">24.793.104</td>
+          <td class="num kpi">71.789.384</td>
+          <td class="num kpi">4.183.314</td>
+          <td class="num target">20.392.698</td>
+          <td class="num target">512.122</td>
+          <td class="num">60</td>
+          <td class="num aov">220.383</td>
+          <td><span class="tag risk">AOV thấp</span><br><span>Ưu tiên kèm sale: combo, topup, dịch vụ cộng thêm.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">3.670.686</td>
+          <td>AOV thấp hơn mốc, cần kèm cách tư vấn combo/topup và dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>Trần Phước Thiện</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Nâng AOV</span></td>
+          <td class="num">12.109.112</td>
+          <td class="num">22.704.585</td>
+          <td class="num kpi">22.704.585</td>
+          <td class="num kpi">756.820</td>
+          <td class="num target">18.743.938</td>
+          <td class="num target">473.916</td>
+          <td class="num">66</td>
+          <td class="num aov">183.471</td>
+          <td><span class="tag risk">AOV thấp</span><br><span>Ưu tiên kèm sale: combo, topup, dịch vụ cộng thêm.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">3.373.909</td>
+          <td>AOV thấp hơn mốc, cần kèm cách tư vấn combo/topup và dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>skntrinhhg</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Nâng AOV</span></td>
+          <td class="num">4.906.659</td>
+          <td class="num">9.199.986</td>
+          <td class="num kpi">113.300</td>
+          <td class="num kpi">-</td>
+          <td class="num target">6.615.625</td>
+          <td class="num target">122.069</td>
+          <td class="num">27</td>
+          <td class="num aov">181.728</td>
+          <td><span class="tag risk">AOV thấp</span><br><span>Ưu tiên kèm sale: combo, topup, dịch vụ cộng thêm.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">1.190.812</td>
+          <td>AOV thấp hơn mốc, cần kèm cách tư vấn combo/topup và dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>Lê Đông Nghi</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Nâng AOV</span></td>
+          <td class="num">3.092.400</td>
+          <td class="num">5.798.250</td>
+          <td class="num kpi">5.798.250</td>
+          <td class="num kpi">193.275</td>
+          <td class="num target">4.475.000</td>
+          <td class="num target">98.757</td>
+          <td class="num">16</td>
+          <td class="num aov">193.275</td>
+          <td><span class="tag risk">AOV thấp</span><br><span>Ưu tiên kèm sale: combo, topup, dịch vụ cộng thêm.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">805.500</td>
+          <td>AOV thấp hơn mốc, cần kèm cách tư vấn combo/topup và dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>Trần Nhất Duyên</b><br><span>Stylist · Level 2</span></td>
+          <td><span class="tag risk">Kèm sát ca</span></td>
+          <td class="num">33.555.651</td>
+          <td class="num">62.916.846</td>
+          <td class="num kpi">52.542.609</td>
+          <td class="num kpi">1.356.211</td>
+          <td class="num target">77.183.062</td>
+          <td class="num target">3.116.244</td>
+          <td class="num">72</td>
+          <td class="num aov">466.051</td>
+          <td><span class="tag warn">AOV cao, thiếu khách</span><br><span>Sale tốt nhưng cần thêm khách/ca để kéo doanh thu.</span></td>
+          <td class="num">5,6%</td>
+          <td class="num salary">13.892.951</td>
+          <td>Cần được chia khách phù hợp và check kết quả giữa ca, không đợi cuối ngày.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Hoàng Kha</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag warn">Push SP</span></td>
+          <td class="num">45.484.522</td>
+          <td class="num">85.283.479</td>
+          <td class="num kpi">85.212.519</td>
+          <td class="num kpi">2.837.714</td>
+          <td class="num target">87.261.406</td>
+          <td class="num target">2.984.063</td>
+          <td class="num">193</td>
+          <td class="num aov">235.671</td>
+          <td><span class="tag warn">Cần nâng AOV</span><br><span>Chưa chạm mốc KPI AOV, cần upsell dịch vụ/SP rõ hơn.</span></td>
+          <td class="num">1,6%</td>
+          <td class="num salary">15.707.053</td>
+          <td>CR SP thấp, cần checklist tư vấn SP sau dịch vụ và chốt lại trước khi khách ra quầy.</td>
+        </tr>
+
+        <tr>
+          <td><b>Trương Phúc Tỷ</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag warn">Push SP</span></td>
+          <td class="num">40.891.760</td>
+          <td class="num">76.672.050</td>
+          <td class="num kpi">93.239.254</td>
+          <td class="num kpi">3.739.107</td>
+          <td class="num target">79.238.521</td>
+          <td class="num target">2.739.054</td>
+          <td class="num">179</td>
+          <td class="num aov">228.446</td>
+          <td><span class="tag warn">Cần nâng AOV</span><br><span>Chưa chạm mốc KPI AOV, cần upsell dịch vụ/SP rõ hơn.</span></td>
+          <td class="num">0,6%</td>
+          <td class="num salary">14.262.934</td>
+          <td>CR SP thấp, cần checklist tư vấn SP sau dịch vụ và chốt lại trước khi khách ra quầy.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Trung Thực</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag warn">Nâng AOV</span></td>
+          <td class="num">42.273.253</td>
+          <td class="num">79.262.349</td>
+          <td class="num kpi">70.260.280</td>
+          <td class="num kpi">1.999.073</td>
+          <td class="num target">78.547.562</td>
+          <td class="num target">2.591.022</td>
+          <td class="num">186</td>
+          <td class="num aov">227.276</td>
+          <td><span class="tag warn">Cần nâng AOV</span><br><span>Chưa chạm mốc KPI AOV, cần upsell dịch vụ/SP rõ hơn.</span></td>
+          <td class="num">2,7%</td>
+          <td class="num salary">14.138.561</td>
+          <td>AOV thấp hơn nhóm, cần gợi ý combo/topup hoặc dịch vụ cộng thêm.</td>
+        </tr>
+
+        <tr>
+          <td><b>Đỗ Thị Linh</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Kèm sát ca</span></td>
+          <td class="num">14.653.234</td>
+          <td class="num">27.474.814</td>
+          <td class="num kpi">97.536.403</td>
+          <td class="num kpi">5.920.226</td>
+          <td class="num target">25.757.823</td>
+          <td class="num target">793.185</td>
+          <td class="num">36</td>
+          <td class="num aov">407.034</td>
+          <td><span class="tag warn">AOV cao, thiếu khách</span><br><span>Sale tốt nhưng cần thêm khách/ca để kéo doanh thu.</span></td>
+          <td class="num">13,9%</td>
+          <td class="num salary">4.636.408</td>
+          <td>Cần được chia khách phù hợp và check kết quả giữa ca, không đợi cuối ngày.</td>
+        </tr>
+
+        <tr>
+          <td><b>Thạch Thị Chanh Đa</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Kèm sát ca</span></td>
+          <td class="num">10.938.555</td>
+          <td class="num">20.509.791</td>
+          <td class="num kpi">66.939.481</td>
+          <td class="num kpi">4.000.066</td>
+          <td class="num target">16.629.729</td>
+          <td class="num target">406.512</td>
+          <td class="num">36</td>
+          <td class="num aov">303.849</td>
+          <td><span class="tag warn">AOV cao, thiếu khách</span><br><span>Sale tốt nhưng cần thêm khách/ca để kéo doanh thu.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">2.993.351</td>
+          <td>Cần được chia khách phù hợp và check kết quả giữa ca, không đợi cuối ngày.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Lê Phương Nguyên</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag risk">Kèm sát ca</span></td>
+          <td class="num">9.363.220</td>
+          <td class="num">17.556.038</td>
+          <td class="num kpi">17.556.038</td>
+          <td class="num kpi">585.201</td>
+          <td class="num target">9.743.750</td>
+          <td class="num target">27.181</td>
+          <td class="num">34</td>
+          <td class="num aov">275.389</td>
+          <td><span class="tag warn">AOV cao, thiếu khách</span><br><span>Sale tốt nhưng cần thêm khách/ca để kéo doanh thu.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">1.753.875</td>
+          <td>Cần được chia khách phù hợp và check kết quả giữa ca, không đợi cuối ngày.</td>
+        </tr>
+
+        <tr>
+          <td><b>Huỳnh Bá Thành</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag risk">Kèm sát ca</span></td>
+          <td class="num">610.000</td>
+          <td class="num">1.143.750</td>
+          <td class="num kpi">1.143.750</td>
+          <td class="num kpi">38.125</td>
+          <td class="num target">-</td>
+          <td class="num target">-</td>
+          <td class="num">2</td>
+          <td class="num aov">305.000</td>
+          <td><span class="tag warn">AOV cao, thiếu khách</span><br><span>Sale tốt nhưng cần thêm khách/ca để kéo doanh thu.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">0</td>
+          <td>Cần được chia khách phù hợp và check kết quả giữa ca, không đợi cuối ngày.</td>
+        </tr>
+
+        <tr>
+          <td><b>Võ Văn Trí</b><br><span>Stylist · Level 3</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">57.448.721</td>
+          <td class="num">107.716.352</td>
+          <td class="num kpi">101.089.879</td>
+          <td class="num kpi">3.117.226</td>
+          <td class="num target">178.928.948</td>
+          <td class="num target">8.677.159</td>
+          <td class="num">212</td>
+          <td class="num aov">270.985</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">3,3%</td>
+          <td class="num salary">32.207.211</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Phạm Văn Phát</b><br><span>Stylist · Level 2</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">45.715.095</td>
+          <td class="num">85.715.803</td>
+          <td class="num kpi">86.678.105</td>
+          <td class="num kpi">2.925.929</td>
+          <td class="num target">108.466.979</td>
+          <td class="num target">4.482.277</td>
+          <td class="num">170</td>
+          <td class="num aov">268.912</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">2,9%</td>
+          <td class="num salary">19.524.056</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>PHÙ THỊ HOÀNG UYÊN</b><br><span>Skinner · Level 2</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">49.166.252</td>
+          <td class="num">92.186.722</td>
+          <td class="num kpi">99.056.438</td>
+          <td class="num kpi">3.563.585</td>
+          <td class="num target">100.572.271</td>
+          <td class="num target">3.671.858</td>
+          <td class="num">169</td>
+          <td class="num aov">290.925</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">7,1%</td>
+          <td class="num salary">18.103.009</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Thị Thúy Hằng</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">48.582.161</td>
+          <td class="num">91.091.552</td>
+          <td class="num kpi">77.711.088</td>
+          <td class="num kpi">2.080.638</td>
+          <td class="num target">91.676.073</td>
+          <td class="num target">3.078.137</td>
+          <td class="num">172</td>
+          <td class="num aov">282.454</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">1,7%</td>
+          <td class="num salary">16.501.693</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Cao Thị Kim Chi</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">42.677.813</td>
+          <td class="num">80.020.899</td>
+          <td class="num kpi">79.724.323</td>
+          <td class="num kpi">2.646.179</td>
+          <td class="num target">84.230.750</td>
+          <td class="num target">2.968.067</td>
+          <td class="num">158</td>
+          <td class="num aov">270.113</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">2,5%</td>
+          <td class="num salary">15.161.535</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Trương Huỳnh Nhi</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">42.231.267</td>
+          <td class="num">79.183.626</td>
+          <td class="num kpi">74.964.164</td>
+          <td class="num kpi">2.338.064</td>
+          <td class="num target">83.100.073</td>
+          <td class="num target">2.919.200</td>
+          <td class="num">164</td>
+          <td class="num aov">257.508</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">4,3%</td>
+          <td class="num salary">14.958.013</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Nguyễn Hoàng Triệu Vy</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">41.119.273</td>
+          <td class="num">77.098.637</td>
+          <td class="num kpi">68.831.469</td>
+          <td class="num kpi">1.979.443</td>
+          <td class="num target">76.235.333</td>
+          <td class="num target">2.508.290</td>
+          <td class="num">154</td>
+          <td class="num aov">267.008</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">0,6%</td>
+          <td class="num salary">13.722.360</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Ngô Thị Ngọc Ánh</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">35.325.874</td>
+          <td class="num">66.236.014</td>
+          <td class="num kpi">61.628.112</td>
+          <td class="num kpi">1.878.731</td>
+          <td class="num target">70.096.781</td>
+          <td class="num target">2.483.636</td>
+          <td class="num">136</td>
+          <td class="num aov">259.749</td>
+          <td><span class="tag ok">AOV cao + khách tốt</span><br><span>Sale tốt, vừa biết nâng bill vừa có sản lượng.</span></td>
+          <td class="num">0,7%</td>
+          <td class="num salary">12.617.421</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Ngô Thuỳ Phương</b><br><span>Skinner · Level 1</span></td>
+          <td><span class="tag ok">Sale tốt</span></td>
+          <td class="num">37.817.139</td>
+          <td class="num">70.907.136</td>
+          <td class="num kpi">70.675.387</td>
+          <td class="num kpi">2.347.018</td>
+          <td class="num target">68.566.052</td>
+          <td class="num target">2.196.351</td>
+          <td class="num">150</td>
+          <td class="num aov">252.114</td>
+          <td><span class="tag ok">AOV đạt nhóm</span><br><span>AOV ổn so với mặt bằng, giữ kịch bản tư vấn hiện tại.</span></td>
+          <td class="num">0,0%</td>
+          <td class="num salary">12.341.889</td>
+          <td>AOV cao và lượng khách tốt, dùng làm mẫu tư vấn combo/topup cho nhóm còn lại.</td>
+        </tr>
+
+        <tr>
+          <td><b>Huỳnh Văn Kha</b><br><span>Stylist · Level 1</span></td>
+          <td><span class="tag ok">Nhân rộng</span></td>
+          <td class="num">43.483.591</td>
+          <td class="num">81.531.733</td>
+          <td class="num kpi">50.097.923</td>
+          <td class="num kpi">472.452</td>
+          <td class="num target">70.127.000</td>
+          <td class="num target">1.903.101</td>
+          <td class="num">176</td>
+          <td class="num aov">247.066</td>
+          <td><span class="tag warn">Cần nâng AOV</span><br><span>Chưa chạm mốc KPI AOV, cần upsell dịch vụ/SP rõ hơn.</span></td>
+          <td class="num">2,8%</td>
+          <td class="num salary">12.622.860</td>
+          <td>Đang có nhịp tốt, dùng làm mẫu quy trình cho ca sau.</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Trang Sup/CVTV</h2>
+      <div id="supLock" class="locked">
+        <div class="muted">Khu này tách riêng 2 Sup/CVTV khỏi bảng chính. Nhập mật khẩu để xem.</div>
+        <div class="password-row">
+          <input id="supPassword" type="password" placeholder="Mật khẩu">
+          <button type="button" onclick="unlockSup()">Mở</button>
+        </div>
+        <div id="supError" class="error"></div>
+      </div>
+      <div id="supContent">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Sup/CVTV</th><th class="num">DT hiện tại</th><th class="num">DT dự tính</th><th class="num">KPI T6</th><th class="num">KPI/ngày cần</th><th class="num">Khách</th><th class="num">AOV</th><th class="num">CR SP</th><th class="num">Lương dự tính T6</th><th>Việc cần push</th></tr>
+            </thead>
+            <tbody>
+        <tr>
+          <td><b>Nguyễn Hữu Minh</b><br><span>Sup DV · Level 2</span></td>
+          <td class="num">215.963.353</td>
+          <td class="num">404.931.287</td>
+          <td class="num kpi">404.931.287</td>
+          <td class="num kpi">13.497.710</td>
+          <td class="num">841</td>
+          <td class="num">256.794</td>
+          <td class="num">1,8%</td>
+          <td class="num salary">24.203.259</td>
+          <td>Chốt booking, phân khách đúng người mạnh, kiểm tra SP/topup cuối ca.</td>
+        </tr>
+
+        <tr>
+          <td><b>Kim Thị Mỹ Trinh</b><br><span>Sup DV · Level 2</span></td>
+          <td class="num">184.651.423</td>
+          <td class="num">346.221.418</td>
+          <td class="num kpi">346.221.418</td>
+          <td class="num kpi">11.540.714</td>
+          <td class="num">741</td>
+          <td class="num">249.192</td>
+          <td class="num">1,2%</td>
+          <td class="num salary">21.158.844</td>
+          <td>Chốt booking, phân khách đúng người mạnh, kiểm tra SP/topup cuối ca.</td>
+        </tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    const SUP_PASSWORD = "927";
+    function unlockSup() {
+      const input = document.getElementById("supPassword");
+      const error = document.getElementById("supError");
+      if (input.value === SUP_PASSWORD) {
+        document.getElementById("supLock").style.display = "none";
+        document.getElementById("supContent").style.display = "block";
+        error.textContent = "";
+      } else {
+        error.textContent = "Sai mật khẩu";
+      }
+    }
+    document.getElementById("supPassword").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") unlockSup();
+    });
+  </script>
+</body>
+</html>
