@@ -52,7 +52,7 @@
 <body>
   <header>
     <h1>Báo cáo cảnh báo lủng công vùng Thanh Sang</h1>
-    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-19 · Cập nhật: 2026-06-19 12:42:31 · 9 salon</p>
+    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-19 · Cập nhật: 2026-06-19 12:52:10 · 9 salon</p>
   </header>
   <main>
     <section class="topline">
@@ -63,18 +63,18 @@
     <section class="grid">
       <div class="metric">Salon trong vùng<b>9</b></div>
       <div class="metric">Dòng kiểm tra<b>342</b></div>
-      <div class="metric critical">Phạt năng suất<b>24 dòng</b></div>
+      <div class="metric critical">Phạt Vượt năng suất<b>24 dòng</b></div>
       <div class="metric critical">Tiền phạt năng suất<b>2.200.000đ</b></div>
       <div class="metric">Dòng kiểm tra tỷ lệ NS<b>342</b></div>
       <div class="metric critical">Phạt tỷ lệ NS<b>2 dòng</b></div>
       <div class="metric critical">Tiền phạt tỷ lệ NS<b>200.000đ</b></div>
       <div class="metric critical">Tổng phạt chung<b>2.400.000đ</b></div>
-      <div class="metric warn">Trách nhiệm 300k<b>2.700.000đ</b></div>
+      <div class="metric warn">Lủng công nhân sự 300k<b>2.700.000đ</b></div>
     </section>
     <p class="rules">- Nguồn đúng: Power BI mục <b>Tổng hợp chấm công</b>, cột <b>Năng suất khách/thợ/ngày</b> và <b>Tỷ lệ Nhân sự Thực tế trong tuần (c/e)</b>.<br>- Năng suất vượt mốc phạt 100.000đ. Nếu cùng salon/ngày cả Stylist và Skinner đều vượt thì tổng phạt chỉ tính 100.000đ.<br>- Tỷ lệ nhân sự thực tế: Thứ 2-6 dưới 50%, Thứ 7-CN dưới 80% phạt 100.000đ/dòng.<br>- Mức chịu trách nhiệm 300k lấy từ bảng <b>Nhân sự thiếu công</b>, có StaffName và tách thành mục riêng trong cùng báo cáo này.</p>
     <section class="summary-grid">
       <div class="panel">
-        <h2>Tóm tắt phạt năng suất theo salon</h2>
+        <h2>Phạt Vượt năng suất</h2>
         <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Số dòng phạt</th><th class="fine">Phạt</th></tr></thead><tbody><tr style='background:#ede9fe'><td>927 HG</td><td class='num'>5</td><td class='fine'>500.000đ</td></tr>
 <tr style='background:#ffedd5'><td>575 AC</td><td class='num'>5</td><td class='fine'>400.000đ</td></tr>
 <tr style='background:#ccfbf1'><td>708 LTT</td><td class='num'>4</td><td class='fine'>300.000đ</td></tr>
@@ -85,11 +85,11 @@
 <tr style='background:#fce7f3'><td>145 THT</td><td class='num'>1</td><td class='fine'>100.000đ</td></tr></tbody></table></div>
       </div>
       <div class="panel">
-        <h2>Tóm tắt phạt tỷ lệ nhân sự</h2>
+        <h2>Phạt vượt định biên 50%-80%</h2>
         <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Số dòng phạt</th><th class="fine">Phạt</th></tr></thead><tbody><tr style='background:#ede9fe'><td>927 HG</td><td class='num'>2</td><td class='fine'>200.000đ</td></tr></tbody></table></div>
       </div>
       <div class="panel">
-        <h2>Tóm tắt trách nhiệm 300k</h2>
+        <h2>Lủng công nhân sự 300k</h2>
         <div class="table-wrap"><table><thead><tr><th>Salon</th><th class="num">Số dòng</th><th class="fine">Trách nhiệm</th></tr></thead><tbody><tr style='background:#ffedd5'><td>575 AC</td><td class='num'>1</td><td class='fine'>300.000đ</td></tr>
 <tr style='background:#ede9fe'><td>927 HG</td><td class='num'>8</td><td class='fine'>2.400.000đ</td></tr></tbody></table></div>
       </div>
@@ -133,7 +133,7 @@
     </section>
 
     <section class="panel">
-    <h2>Cảnh báo tỷ lệ nhân sự thực tế trong tuần</h2>
+    <h2>Phạt vượt định biên 50%-80%</h2>
     <div class="filters">
       <label>Ngày<select id="ratioDateFilter"><option value="">Tất cả</option><option value='2026-06-01'>2026-06-01</option>
 <option value='2026-06-02'>2026-06-02</option>
@@ -171,7 +171,7 @@
     </section>
 
     <section class="panel">
-    <h2>Mức chịu trách nhiệm 300k theo nhân sự</h2>
+    <h2>Lủng công nhân sự 300k</h2>
     <div class="filters">
       <label>Ngày<select id="responsibilityDateFilter"><option value="">Tất cả</option><option value='2026-06-01'>2026-06-01</option>
 <option value='2026-06-02'>2026-06-02</option>
