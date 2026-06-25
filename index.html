@@ -27,9 +27,9 @@
     .rules { padding:12px 14px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--brand); border-radius:8px; line-height:1.45; }
     .rules b { color:var(--ink); }
     .panel { background:#fff; border:1px solid var(--line); border-radius:8px; padding:14px; margin-top:12px; }
-    .filters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:10px 0; }
+    .filters { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:10px 0; }
     label { display:grid; gap:6px; color:var(--muted); font-size:13px; font-weight:700; }
-    select { width:100%; min-height:38px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; background:#fff; color:var(--ink); font:inherit; }
+    select,input { width:100%; min-height:38px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; background:#fff; color:var(--ink); font:inherit; }
     table { width:100%; border-collapse:separate; border-spacing:0; font-size:14px; background:#fff; }
     th,td { border-bottom:1px solid var(--line); padding:9px 8px; text-align:left; vertical-align:top; }
     th { background:#f8fafc; color:#344054; position:sticky; top:0; z-index:1; font-size:13px; }
@@ -54,7 +54,7 @@
 <body>
   <header>
     <h1>Báo cáo cảnh báo lủng công vùng Thanh Sang</h1>
-    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-25 · Cập nhật: 2026-06-25 12:15:41 · 9 salon</p>
+    <p class="subhead">Kỳ dữ liệu: 2026-06-01 đến 2026-06-25 · Cập nhật: 2026-06-25 12:34:47 · 9 salon</p>
   </header>
   <main>
     <section class="topline">
@@ -138,6 +138,8 @@
 <option value='99 TSN'>99 TSN</option></select></label>
       <label>Trạng thái<select id="statusFilter"><option value="">Tất cả</option><option value="PHAT">Có phạt</option><option value="DAT">Không phạt</option><option value="CHUA_CO_DU_LIEU">Chưa có dữ liệu</option></select></label>
       <label>Bộ phận<select id="roleFilter"><option value="">Tất cả</option><option value="Stylist">Stylist</option><option value="Skinner">Skinner</option></select></label>
+      <label>Dữ liệu<select id="dataFilter"><option value="">Tất cả</option><option value="HAS_DATA">Có dữ liệu</option><option value="MISSING">Chưa có dữ liệu</option></select></label>
+      <label>Tìm nhanh<input id="searchFilter" type="search" placeholder="Salon, bộ phận, ghi chú"></label>
     </div>
     <p id="filterSummary" class="rules"></p>
     <div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Thứ</th><th>Salon</th><th>Bộ phận</th><th class="num">Nhân sự</th><th class="num">Khách/Thợ/Ngày</th><th class="num">Mốc</th><th>Trạng thái</th><th class="fine">Phạt</th><th>Ghi chú</th></tr></thead><tbody id="detailRows"></tbody></table></div>
@@ -182,6 +184,7 @@
 <option value='99 TSN'>99 TSN</option></select></label>
       <label>Trạng thái<select id="ratioStatusFilter"><option value="">Tất cả</option><option value="PHAT">Có phạt</option><option value="DAT">Không phạt</option></select></label>
       <label>Bộ phận<select id="ratioRoleFilter"><option value="">Tất cả</option><option value="Stylist">Stylist</option><option value="Skinner">Skinner</option></select></label>
+      <label>Tìm nhanh<input id="ratioSearchFilter" type="search" placeholder="Salon, bộ phận, ghi chú"></label>
     </div>
     <p id="ratioFilterSummary" class="rules"></p>
     <div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Thứ</th><th>Salon</th><th>Bộ phận</th><th class="num">Tỷ lệ thực tế (c/e)</th><th class="num">Mốc</th><th class="num">Tỷ lệ chấm công (a/e)</th><th>Trạng thái</th><th class="fine">Phạt</th><th>Ghi chú</th></tr></thead><tbody id="ratioDetailRows"></tbody></table></div>
@@ -226,6 +229,7 @@
 <option value='99 TSN'>99 TSN</option></select></label>
       <label>Vị trí<select id="responsibilityRoleFilter"><option value="">Tất cả</option><option value="Stylist">Stylist</option><option value="Skinner">Skinner</option></select></label>
       <label>Mức<select id="responsibilityAmountFilter"><option value="">Tất cả</option><option value="300000">300.000đ</option></select></label>
+      <label>Tìm nhanh<input id="responsibilitySearchFilter" type="search" placeholder="Tên nhân sự, salon"></label>
     </div>
     <p id="responsibilityFilterSummary" class="rules"></p>
     <div class="table-wrap"><table><thead><tr><th>StaffName</th><th>Vị trí</th><th>Ngày</th><th>Thứ</th><th>Salon</th><th class="num">Năng suất salon/vị trí</th><th class="num">Giờ đăng ký</th><th class="num">Giờ đã chấm</th><th class="num">Ngày công chấm - đăng ký</th><th class="num">Thợ đăng ký</th><th class="num">Thợ thực tế</th><th class="num">Chênh lệch</th><th class="fine">Mức chịu trách nhiệm</th></tr></thead><tbody id="responsibilityDetailRows"></tbody></table></div>
@@ -238,22 +242,30 @@
     const salonColors = {"99 TSN": "#fee2e2", "8 CVL": "#dcfce7", "312 LVS": "#e0f2fe", "190 HB": "#fef3c7", "927 HG": "#ede9fe", "145 THT": "#fce7f3", "708 LTT": "#ccfbf1", "575 AC": "#ffedd5", "730 TL10": "#e2e8f0"};
     const money = value => `${Number(value || 0).toLocaleString('vi-VN')}đ`;
     const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-    const controls = ['dateFilter', 'salonFilter', 'statusFilter', 'roleFilter'].map(id => document.getElementById(id));
-    const ratioControls = ['ratioDateFilter', 'ratioSalonFilter', 'ratioStatusFilter', 'ratioRoleFilter'].map(id => document.getElementById(id));
-    const responsibilityControls = ['responsibilityDateFilter', 'responsibilitySalonFilter', 'responsibilityRoleFilter', 'responsibilityAmountFilter'].map(id => document.getElementById(id));
+    const controls = ['dateFilter', 'salonFilter', 'statusFilter', 'roleFilter', 'dataFilter', 'searchFilter'].map(id => document.getElementById(id));
+    const ratioControls = ['ratioDateFilter', 'ratioSalonFilter', 'ratioStatusFilter', 'ratioRoleFilter', 'ratioSearchFilter'].map(id => document.getElementById(id));
+    const responsibilityControls = ['responsibilityDateFilter', 'responsibilitySalonFilter', 'responsibilityRoleFilter', 'responsibilityAmountFilter', 'responsibilitySearchFilter'].map(id => document.getElementById(id));
     const tbody = document.getElementById('detailRows');
     const summary = document.getElementById('filterSummary');
     const ratioTbody = document.getElementById('ratioDetailRows');
     const ratioSummary = document.getElementById('ratioFilterSummary');
     const responsibilityTbody = document.getElementById('responsibilityDetailRows');
     const responsibilitySummary = document.getElementById('responsibilityFilterSummary');
+    const rowMatchesSearch = (row, query, fields) => {
+      if (!query) return true;
+      const normalized = query.trim().toLowerCase();
+      if (!normalized) return true;
+      return fields.some(field => String(row[field] ?? '').toLowerCase().includes(normalized));
+    };
     function render() {
-      const [date, salon, status, role] = controls.map(control => control.value);
+      const [date, salon, status, role, dataState, search] = controls.map(control => control.value);
       const filtered = rows.filter(row =>
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!status || row.Trang_thai === status) &&
-        (!role || row.Bo_phan === role)
+        (!role || row.Bo_phan === role) &&
+        (!dataState || (dataState === 'MISSING' ? row.Trang_thai === 'CHUA_CO_DU_LIEU' : row.Trang_thai !== 'CHUA_CO_DU_LIEU')) &&
+        rowMatchesSearch(row, search, ['Ngay', 'Thu', 'Salon', 'Bo_phan', 'Nang_suat_thuc_te', 'Muc_tieu', 'Tong_tho', 'Ghi_chu'])
       );
       const fine = filtered.reduce((sum, row) => sum + Number(row.Tien_phat || 0), 0);
       const countFine = filtered.filter(row => row.Trang_thai === 'PHAT').length;
@@ -279,12 +291,13 @@
       }).join('');
     }
     function renderRatio() {
-      const [date, salon, status, role] = ratioControls.map(control => control.value);
+      const [date, salon, status, role, search] = ratioControls.map(control => control.value);
       const filtered = ratioRows.filter(row =>
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!status || row.Trang_thai === status) &&
-        (!role || row.Bo_phan === role)
+        (!role || row.Bo_phan === role) &&
+        rowMatchesSearch(row, search, ['Ngay', 'Thu', 'Salon', 'Bo_phan', 'Ty_le_nhan_su_thuc_te_tuan', 'Muc_tieu_ty_le', 'Ty_le_nhan_su_cham_cong_tuan', 'Ghi_chu'])
       );
       const fine = filtered.reduce((sum, row) => sum + Number(row.Tien_phat || 0), 0);
       const countFine = filtered.filter(row => row.Trang_thai === 'PHAT').length;
@@ -308,12 +321,13 @@
       }).join('');
     }
     function renderResponsibility() {
-      const [date, salon, role, amount] = responsibilityControls.map(control => control.value);
+      const [date, salon, role, amount, search] = responsibilityControls.map(control => control.value);
       const filtered = responsibilityRows.filter(row =>
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!role || row.Vi_tri === role) &&
-        (!amount || String(row.Muc_chiu_trach_nhiem) === amount)
+        (!amount || String(row.Muc_chiu_trach_nhiem) === amount) &&
+        rowMatchesSearch(row, search, ['StaffName', 'Vi_tri', 'Ngay', 'Thu', 'Salon', 'Nang_suat_salon_vi_tri', 'Chenh_lech_so_tho'])
       );
       const total = filtered.reduce((sum, row) => sum + Number(row.Muc_chiu_trach_nhiem || 0), 0);
       responsibilitySummary.textContent = `${filtered.length} dòng · Tổng mức chịu trách nhiệm ${money(total)}`;
@@ -334,8 +348,11 @@
         </tr>`).join('');
     }
     controls.forEach(control => control.addEventListener('change', render));
+    controls.forEach(control => control.addEventListener('input', render));
     ratioControls.forEach(control => control.addEventListener('change', renderRatio));
+    ratioControls.forEach(control => control.addEventListener('input', renderRatio));
     responsibilityControls.forEach(control => control.addEventListener('change', renderResponsibility));
+    responsibilityControls.forEach(control => control.addEventListener('input', renderResponsibility));
     render();
     renderRatio();
     renderResponsibility();
