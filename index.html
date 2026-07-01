@@ -54,7 +54,14 @@
 <body>
   <header>
     <h1>Báo cáo cảnh báo lủng công vùng Thanh Sang</h1>
-    <p class="subhead">Kỳ dữ liệu: 2026-07-01 đến 2026-07-01 · Cập nhật: 2026-07-01 11:22:28 · 9 salon</p>
+    <p class="subhead">Kỳ dữ liệu: 2026-07-01 đến 2026-07-01 · Cập nhật: 2026-07-01 11:45:12 · 9 salon</p>
+    <div style="padding:10px 18px 12px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#f8fafc">
+      <b style="color:var(--brand);font-size:14px;white-space:nowrap">Lọc khoảng ngày</b>
+      <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Từ ngày<input id="fromDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font:inherit;background:#fff"></label>
+      <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Đến ngày<input id="toDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font:inherit;background:#fff"></label>
+      <button id="clearDateRange" style="border:1px solid var(--line);border-radius:8px;padding:6px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--muted)">Xóa lọc</button>
+      <span id="dateRangeLabel" style="color:var(--brand);font-size:13px;font-weight:700"></span>
+    </div>
   </header>
   <main>
     <section class="topline">
@@ -134,15 +141,6 @@
             </table>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="panel" style="position:sticky;top:0;z-index:20;border-left:4px solid var(--brand);padding:10px 14px">
-      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-        <b style="color:var(--brand);white-space:nowrap;font-size:14px">Lọc khoảng ngày</b>
-        <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Từ ngày<input id="fromDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font:inherit"></label>
-        <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Đến ngày<input id="toDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font:inherit"></label>
-        <button id="clearDateRange" style="border:1px solid var(--line);border-radius:8px;padding:6px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--muted)">Xóa lọc</button>
-        <span id="dateRangeLabel" style="color:var(--muted);font-size:13px"></span>
       </div>
     </section>
     <section class="panel">
