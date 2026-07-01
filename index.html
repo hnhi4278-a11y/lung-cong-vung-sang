@@ -54,7 +54,7 @@
 <body>
   <header>
     <h1>Báo cáo cảnh báo lủng công vùng Thanh Sang</h1>
-    <p class="subhead">Kỳ dữ liệu: 2026-07-01 đến 2026-07-01 · Cập nhật: 2026-07-01 11:18:29 · 9 salon</p>
+    <p class="subhead">Kỳ dữ liệu: 2026-07-01 đến 2026-07-01 · Cập nhật: 2026-07-01 11:22:28 · 9 salon</p>
   </header>
   <main>
     <section class="topline">
@@ -136,6 +136,15 @@
         </div>
       </div>
     </section>
+    <section class="panel" style="position:sticky;top:0;z-index:20;border-left:4px solid var(--brand);padding:10px 14px">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <b style="color:var(--brand);white-space:nowrap;font-size:14px">Lọc khoảng ngày</b>
+        <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Từ ngày<input id="fromDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font:inherit"></label>
+        <label style="display:flex;align-items:center;gap:6px;margin:0;font-size:13px;font-weight:700;color:var(--muted)">Đến ngày<input id="toDateFilter" type="date" style="min-height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font:inherit"></label>
+        <button id="clearDateRange" style="border:1px solid var(--line);border-radius:8px;padding:6px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--muted)">Xóa lọc</button>
+        <span id="dateRangeLabel" style="color:var(--muted);font-size:13px"></span>
+      </div>
+    </section>
     <section class="panel">
     <h2>Chi tiết năng suất khách/thợ/ngày</h2>
     <div class="filters">
@@ -210,6 +219,26 @@
     const controls = ['dateFilter', 'salonFilter', 'statusFilter', 'roleFilter', 'dataFilter', 'searchFilter'].map(id => document.getElementById(id));
     const ratioControls = ['ratioDateFilter', 'ratioSalonFilter', 'ratioStatusFilter', 'ratioRoleFilter', 'ratioSearchFilter'].map(id => document.getElementById(id));
     const responsibilityControls = ['responsibilityDateFilter', 'responsibilitySalonFilter', 'responsibilityRoleFilter', 'responsibilityAmountFilter', 'responsibilitySearchFilter'].map(id => document.getElementById(id));
+    const fromDateEl = document.getElementById('fromDateFilter');
+    const toDateEl = document.getElementById('toDateFilter');
+    const dateRangeLabel = document.getElementById('dateRangeLabel');
+    const inDateRange = ngay => {
+      const from = fromDateEl.value;
+      const to = toDateEl.value;
+      return (!from || ngay >= from) && (!to || ngay <= to);
+    };
+    const updateRangeLabel = () => {
+      const from = fromDateEl.value;
+      const to = toDateEl.value;
+      if (from || to) dateRangeLabel.textContent = `Đang lọc: ${from || '…'} → ${to || '…'}`;
+      else dateRangeLabel.textContent = '';
+    };
+    document.getElementById('clearDateRange').addEventListener('click', () => {
+      fromDateEl.value = '';
+      toDateEl.value = '';
+      renderAll();
+    });
+    [fromDateEl, toDateEl].forEach(el => el.addEventListener('change', () => { updateRangeLabel(); renderAll(); }));
     const tbody = document.getElementById('detailRows');
     const summary = document.getElementById('filterSummary');
     const ratioTbody = document.getElementById('ratioDetailRows');
@@ -225,6 +254,7 @@
     function render() {
       const [date, salon, status, role, dataState, search] = controls.map(control => control.value);
       const filtered = rows.filter(row =>
+        inDateRange(row.Ngay) &&
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!status || row.Trang_thai === status) &&
@@ -258,6 +288,7 @@
     function renderRatio() {
       const [date, salon, status, role, search] = ratioControls.map(control => control.value);
       const filtered = ratioRows.filter(row =>
+        inDateRange(row.Ngay) &&
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!status || row.Trang_thai === status) &&
@@ -288,6 +319,7 @@
     function renderResponsibility() {
       const [date, salon, role, amount, search] = responsibilityControls.map(control => control.value);
       const filtered = responsibilityRows.filter(row =>
+        inDateRange(row.Ngay) &&
         (!date || row.Ngay === date) &&
         (!salon || row.Salon === salon) &&
         (!role || row.Vi_tri === role) &&
@@ -312,15 +344,14 @@
           <td class="fine">${money(row.Muc_chiu_trach_nhiem)}</td>
         </tr>`).join('');
     }
+    function renderAll() { render(); renderRatio(); renderResponsibility(); }
     controls.forEach(control => control.addEventListener('change', render));
     controls.forEach(control => control.addEventListener('input', render));
     ratioControls.forEach(control => control.addEventListener('change', renderRatio));
     ratioControls.forEach(control => control.addEventListener('input', renderRatio));
     responsibilityControls.forEach(control => control.addEventListener('change', renderResponsibility));
     responsibilityControls.forEach(control => control.addEventListener('input', renderResponsibility));
-    render();
-    renderRatio();
-    renderResponsibility();
+    renderAll();
   </script>
 </body>
 </html>
