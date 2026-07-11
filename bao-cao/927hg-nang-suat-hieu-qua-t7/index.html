@@ -22,9 +22,14 @@
   th { position:sticky; top:0; background:#f8fafc; color:#475569; font-size:11px; text-transform:uppercase; z-index:1; }
   .num { text-align:right; font-variant-numeric:tabular-nums; }
   .table-wrap { max-height:760px; overflow:auto; border:1px solid var(--line); border-radius:8px; margin-top:8px; }
-  .up { color:var(--green); font-weight:800; }
-  .down { color:var(--red); font-weight:800; }
-  .flat { color:#475569; }
+  td.up { color:#166534; font-weight:800; background:#dcfce7; }
+  td.down { color:#991b1b; font-weight:800; background:#fee2e2; }
+  td.flat { color:#334155; background:#e2e8f0; }
+  .value.up { color:var(--green); }
+  .value.down { color:var(--red); }
+  .muted .up { color:var(--green); font-weight:800; }
+  .muted .down { color:var(--red); font-weight:800; }
+  .muted .flat { color:#475569; font-weight:800; }
   @media (max-width:900px) { .grid { grid-template-columns:1fr; } header { display:block; } }
 </style>
 </head>
@@ -35,7 +40,7 @@
       <h1>927 HG - Năng Suất &amp; Hiệu Quả Từng Người</h1>
       <div class="sub">10 ngày đầu Tháng 6 (01-10/06) so với 10 ngày đầu Tháng 7 (01-10/07/2026) — so cùng số ngày cho công bằng.</div>
     </div>
-    <div class="muted">Build: 2026-07-11 13:21:46<br>Nguồn: Power BI 30Shine — đúng measure report gốc (Doanh thu phục vụ = m_DT_DV_staff + m_DT_SP_staff)</div>
+    <div class="muted">Build: 2026-07-11 13:28:33<br>Nguồn: Power BI 30Shine — đúng measure report gốc (Doanh thu phục vụ = m_DT_DV_staff + m_DT_SP_staff)</div>
   </header>
 
   <section>
@@ -93,16 +98,16 @@
             <td class="num down">-30.9%</td>
             <td class="num">455.742</td>
             <td class="num">347.600</td>
-            <td class="num">-23.7%</td>
+            <td class="num down">-23.7%</td>
             <td class="num">53</td>
             <td class="num">48</td>
             <td>UDN</td>
             <td class="num">11.727.540</td>
             <td class="num">7.483.000</td>
-            <td class="num">-36.2%</td>
+            <td class="num down">-36.2%</td>
             <td class="num">1.134.000</td>
             <td class="num">0</td>
-            <td class="num">-100.0%</td>
+            <td class="num down">-100.0%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -112,16 +117,16 @@
             <td class="num down">-13.3%</td>
             <td class="num">242.099</td>
             <td class="num">223.566</td>
-            <td class="num">-7.7%</td>
+            <td class="num down">-7.7%</td>
             <td class="num">115</td>
             <td class="num">108</td>
             <td>UDN</td>
             <td class="num">5.731.000</td>
             <td class="num">2.733.000</td>
-            <td class="num">-52.3%</td>
+            <td class="num down">-52.3%</td>
             <td class="num">972.000</td>
             <td class="num">0</td>
-            <td class="num">-100.0%</td>
+            <td class="num down">-100.0%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -131,16 +136,16 @@
             <td class="num down">-12.9%</td>
             <td class="num">254.512</td>
             <td class="num">258.736</td>
-            <td class="num">+1.7%</td>
+            <td class="num flat">+1.7%</td>
             <td class="num">105</td>
             <td class="num">90</td>
             <td>UDN</td>
             <td class="num">3.435.000</td>
             <td class="num">4.263.000</td>
-            <td class="num">+24.1%</td>
+            <td class="num up">+24.1%</td>
             <td class="num">1.113.000</td>
             <td class="num">798.000</td>
-            <td class="num">-28.3%</td>
+            <td class="num down">-28.3%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -150,16 +155,16 @@
             <td class="num down">-9.3%</td>
             <td class="num">252.970</td>
             <td class="num">244.630</td>
-            <td class="num">-3.3%</td>
+            <td class="num down">-3.3%</td>
             <td class="num">129</td>
             <td class="num">121</td>
             <td>UDN</td>
             <td class="num">7.725.000</td>
             <td class="num">5.782.000</td>
-            <td class="num">-25.2%</td>
+            <td class="num down">-25.2%</td>
             <td class="num">1.055.000</td>
             <td class="num">1.356.000</td>
-            <td class="num">+28.5%</td>
+            <td class="num up">+28.5%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -169,16 +174,16 @@
             <td class="num up">+4.3%</td>
             <td class="num">220.360</td>
             <td class="num">235.803</td>
-            <td class="num">+7.0%</td>
+            <td class="num up">+7.0%</td>
             <td class="num">119</td>
             <td class="num">116</td>
             <td>UDN</td>
             <td class="num">4.301.000</td>
             <td class="num">2.007.000</td>
-            <td class="num">-53.3%</td>
+            <td class="num down">-53.3%</td>
             <td class="num">0</td>
             <td class="num">1.683.000</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -188,16 +193,16 @@
             <td class="num up">+4.5%</td>
             <td class="num">250.416</td>
             <td class="num">245.750</td>
-            <td class="num">-1.9%</td>
+            <td class="num flat">-1.9%</td>
             <td class="num">108</td>
             <td class="num">115</td>
             <td>UDN</td>
             <td class="num">7.330.800</td>
             <td class="num">6.748.000</td>
-            <td class="num">-8.0%</td>
+            <td class="num down">-8.0%</td>
             <td class="num">279.000</td>
             <td class="num">678.000</td>
-            <td class="num">+143.0%</td>
+            <td class="num up">+143.0%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -207,16 +212,16 @@
             <td class="num up">+4.5%</td>
             <td class="num">225.800</td>
             <td class="num">244.800</td>
-            <td class="num">+8.4%</td>
+            <td class="num up">+8.4%</td>
             <td class="num">111</td>
             <td class="num">107</td>
             <td>UDN</td>
             <td class="num">2.719.000</td>
             <td class="num">3.919.000</td>
-            <td class="num">+44.1%</td>
+            <td class="num up">+44.1%</td>
             <td class="num">1.413.000</td>
             <td class="num">279.000</td>
-            <td class="num">-80.3%</td>
+            <td class="num down">-80.3%</td>
           </tr>
           <tr>
             <td>Stylist</td>
@@ -226,16 +231,16 @@
             <td class="num up">+13.0%</td>
             <td class="num">198.065</td>
             <td class="num">234.315</td>
-            <td class="num">+18.3%</td>
+            <td class="num up">+18.3%</td>
             <td class="num">89</td>
             <td class="num">85</td>
             <td>UDN</td>
             <td class="num">768.000</td>
             <td class="num">3.511.000</td>
-            <td class="num">+357.2%</td>
+            <td class="num up">+357.2%</td>
             <td class="num">0</td>
             <td class="num">597.000</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -245,16 +250,16 @@
             <td class="num down">-20.0%</td>
             <td class="num">282.633</td>
             <td class="num">268.726</td>
-            <td class="num">-4.9%</td>
+            <td class="num down">-4.9%</td>
             <td class="num">120</td>
             <td class="num">101</td>
             <td>Topup</td>
             <td class="num">2.169.000</td>
             <td class="num">887.000</td>
-            <td class="num">-59.1%</td>
+            <td class="num down">-59.1%</td>
             <td class="num">429.000</td>
             <td class="num">995.000</td>
-            <td class="num">+131.9%</td>
+            <td class="num up">+131.9%</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -264,16 +269,16 @@
             <td class="num down">-15.9%</td>
             <td class="num">260.379</td>
             <td class="num">286.492</td>
-            <td class="num">+10.0%</td>
+            <td class="num up">+10.0%</td>
             <td class="num">106</td>
             <td class="num">81</td>
             <td>Topup</td>
             <td class="num">0</td>
             <td class="num">0</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
             <td class="num">269.000</td>
             <td class="num">99.000</td>
-            <td class="num">-63.2%</td>
+            <td class="num down">-63.2%</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -283,16 +288,16 @@
             <td class="num down">-3.8%</td>
             <td class="num">263.958</td>
             <td class="num">276.144</td>
-            <td class="num">+4.6%</td>
+            <td class="num up">+4.6%</td>
             <td class="num">100</td>
             <td class="num">92</td>
             <td>Topup</td>
             <td class="num">4.716.000</td>
             <td class="num">5.904.000</td>
-            <td class="num">+25.2%</td>
+            <td class="num up">+25.2%</td>
             <td class="num">198.000</td>
             <td class="num">172.500</td>
-            <td class="num">-12.9%</td>
+            <td class="num down">-12.9%</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -302,16 +307,16 @@
             <td class="num flat">-2.0%</td>
             <td class="num">253.824</td>
             <td class="num">272.279</td>
-            <td class="num">+7.3%</td>
+            <td class="num up">+7.3%</td>
             <td class="num">104</td>
             <td class="num">95</td>
             <td>Topup</td>
             <td class="num">1.341.000</td>
             <td class="num">3.582.000</td>
-            <td class="num">+167.1%</td>
+            <td class="num up">+167.1%</td>
             <td class="num">554.200</td>
             <td class="num">1.242.500</td>
-            <td class="num">+124.2%</td>
+            <td class="num up">+124.2%</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -321,16 +326,16 @@
             <td class="num flat">+3.0%</td>
             <td class="num">279.336</td>
             <td class="num">317.939</td>
-            <td class="num">+13.8%</td>
+            <td class="num up">+13.8%</td>
             <td class="num">105</td>
             <td class="num">95</td>
             <td>Topup</td>
             <td class="num">12.066.000</td>
             <td class="num">2.630.000</td>
-            <td class="num">-78.2%</td>
+            <td class="num down">-78.2%</td>
             <td class="num">985.000</td>
             <td class="num">2.794.657</td>
-            <td class="num">+183.7%</td>
+            <td class="num up">+183.7%</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -340,16 +345,16 @@
             <td class="num up">+15.7%</td>
             <td class="num">229.013</td>
             <td class="num">254.514</td>
-            <td class="num">+11.1%</td>
+            <td class="num up">+11.1%</td>
             <td class="num">98</td>
             <td class="num">102</td>
             <td>Topup</td>
             <td class="num">2.404.000</td>
             <td class="num">3.426.000</td>
-            <td class="num">+42.5%</td>
+            <td class="num up">+42.5%</td>
             <td class="num">0</td>
             <td class="num">1.158.500</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
           </tr>
           <tr>
             <td>Skinner</td>
@@ -359,16 +364,16 @@
             <td class="num up">+118.6%</td>
             <td class="num">195.396</td>
             <td class="num">213.533</td>
-            <td class="num">+9.3%</td>
+            <td class="num up">+9.3%</td>
             <td class="num">14</td>
             <td class="num">28</td>
             <td>Topup</td>
             <td class="num">0</td>
             <td class="num">0</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
             <td class="num">0</td>
             <td class="num">0</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
           </tr>
           <tr>
             <td>Sup</td>
@@ -378,16 +383,16 @@
             <td class="num down">-8.3%</td>
             <td class="num">122.240</td>
             <td class="num">122.267</td>
-            <td class="num">+0.0%</td>
+            <td class="num flat">+0.0%</td>
             <td class="num">1110</td>
             <td class="num">1018</td>
             <td>—</td>
             <td class="num">—</td>
             <td class="num">—</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
             <td class="num">1.625.500</td>
             <td class="num">2.212.000</td>
-            <td class="num">+36.1%</td>
+            <td class="num up">+36.1%</td>
           </tr>
           <tr>
             <td>Sup</td>
@@ -397,16 +402,16 @@
             <td class="num up">+7.2%</td>
             <td class="num">128.084</td>
             <td class="num">126.623</td>
-            <td class="num">-1.1%</td>
+            <td class="num flat">-1.1%</td>
             <td class="num">875</td>
             <td class="num">949</td>
             <td>—</td>
             <td class="num">—</td>
             <td class="num">—</td>
-            <td class="num">—</td>
+            <td class="num ">—</td>
             <td class="num">2.850.000</td>
             <td class="num">2.934.960</td>
-            <td class="num">+3.0%</td>
+            <td class="num flat">+3.0%</td>
           </tr>
       </tbody>
     </table>
