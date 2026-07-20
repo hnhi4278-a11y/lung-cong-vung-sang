@@ -549,18 +549,38 @@
   /* ===== Thư viện ảnh ===== */
   .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:150px;
+    grid-auto-flow:dense;
     gap:14px;
   }
-  .gallery-grid img{
-    width:100%;height:220px;object-fit:cover;
-    border-radius:16px;box-shadow:var(--shadow-sm);
-    transition:transform .3s ease;
+  .gallery-grid figure{
+    position:relative;
+    margin:0;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
   }
-  .gallery-grid img:hover{transform:scale(1.03);}
+  .gallery-grid img{
+    width:100%;height:100%;object-fit:cover;
+    display:block;
+    transition:transform .4s ease;
+  }
+  .gallery-grid figure:hover img{transform:scale(1.06);}
+  .gallery-grid figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:16px 14px 10px;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+    color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.3px;
+  }
+  .g-large{grid-column:span 2;grid-row:span 2;}
+  .g-wide{grid-column:span 2;grid-row:span 1;}
+  .g-normal{grid-column:span 1;grid-row:span 1;}
   @media (max-width:640px){
-    .gallery-grid{grid-template-columns:1fr 1fr;}
-    .gallery-grid img{height:150px;}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:130px;}
+    .g-large{grid-column:span 2;grid-row:span 2;}
+    .g-wide{grid-column:span 2;grid-row:span 1;}
+    .g-normal{grid-column:span 1;grid-row:span 1;}
   }
 
   /* ===== FAQ ===== */
@@ -989,12 +1009,30 @@
     <div class="section-sub">Không gian và dịch vụ thực tế tại Mộc Nhi</div>
   </div>
   <div class="gallery-grid">
-    <img src="photos-web/hero-interior.jpg" alt="Khách trải nghiệm gội đầu dưỡng sinh tại Mộc Nhi">
-    <img src="photos-web/skincare.jpg" alt="Chăm sóc da mặt tại Mộc Nhi">
-    <img src="photos-web/body-massage.jpg" alt="Massage body dưỡng sinh tại Mộc Nhi">
-    <img src="photos-web/storefront-sign.jpg" alt="Bảng hiệu Mộc Nhi ban đêm">
-    <img src="photos-web/storefront-street.jpg" alt="Mặt tiền tiệm Mộc Nhi Lò Gốm">
-    <img src="photos-web/banner.jpg" alt="Mộc Nhi - Gội đầu, thư giãn, chăm sóc từ tâm">
+    <figure class="g-large">
+      <img src="photos-web/hero-interior.jpg" alt="Khách trải nghiệm gội đầu dưỡng sinh tại Mộc Nhi">
+      <figcaption>Không gian gội đầu</figcaption>
+    </figure>
+    <figure class="g-wide">
+      <img src="photos-web/banner.jpg" alt="Mộc Nhi - Gội đầu, thư giãn, chăm sóc từ tâm">
+      <figcaption>Mộc Nhi — Chăm sóc từ tâm</figcaption>
+    </figure>
+    <figure class="g-normal">
+      <img src="photos-web/skincare.jpg" alt="Chăm sóc da mặt tại Mộc Nhi">
+      <figcaption>Chăm sóc da</figcaption>
+    </figure>
+    <figure class="g-normal">
+      <img src="photos-web/body-massage.jpg" alt="Massage body dưỡng sinh tại Mộc Nhi">
+      <figcaption>Massage body</figcaption>
+    </figure>
+    <figure class="g-wide">
+      <img src="photos-web/storefront-sign.jpg" alt="Bảng hiệu Mộc Nhi ban đêm">
+      <figcaption>Bảng hiệu tiệm</figcaption>
+    </figure>
+    <figure class="g-wide">
+      <img src="photos-web/storefront-street.jpg" alt="Mặt tiền tiệm Mộc Nhi Lò Gốm">
+      <figcaption>Mặt tiền — 1065 Lò Gốm</figcaption>
+    </figure>
   </div>
 </section>
 
