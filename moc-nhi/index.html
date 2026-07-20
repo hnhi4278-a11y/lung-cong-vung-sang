@@ -479,6 +479,113 @@
     header{padding:44px 16px 36px;}
     section{padding:48px 16px 8px;}
   }
+
+  /* ===== Giới thiệu ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:36px;
+    align-items:center;
+  }
+  .about-text p{
+    color:var(--ink-soft);
+    font-size:.96rem;
+    margin-bottom:14px;
+  }
+  .about-text ul{list-style:none;padding:0;margin-top:18px;}
+  .about-text li{
+    display:flex;align-items:center;gap:10px;
+    font-size:.92rem;font-weight:600;color:var(--ink);
+    padding:8px 0;border-top:1px solid var(--line);
+  }
+  .about-text li:first-child{border-top:none;}
+  .about-photos{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  .about-photos img{
+    width:100%;height:170px;object-fit:cover;
+    border-radius:16px;box-shadow:var(--shadow-sm);
+    border:3px solid var(--paper);
+  }
+  .about-photos img:first-child{grid-column:1 / -1;height:200px;}
+  @media (max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== Dịch vụ nổi bật ===== */
+  .service-highlights{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+  }
+  .service-card{
+    text-align:center;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:32px 22px;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  .service-icon{
+    width:60px;height:60px;
+    border-radius:50%;
+    background:var(--blush);
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;
+    margin:0 auto 18px;
+  }
+  .service-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.4rem;color:var(--rose-deep);margin-bottom:8px;
+  }
+  .service-card p{color:var(--ink-soft);font-size:.88rem;margin-bottom:16px;}
+  .service-card a{
+    font-size:.8rem;font-weight:700;color:var(--rose-dark);
+    border-bottom:1px solid var(--gold);padding-bottom:2px;
+  }
+
+  /* ===== Thư viện ảnh ===== */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .gallery-grid img{
+    width:100%;height:220px;object-fit:cover;
+    border-radius:16px;box-shadow:var(--shadow-sm);
+    transition:transform .3s ease;
+  }
+  .gallery-grid img:hover{transform:scale(1.03);}
+  @media (max-width:640px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid img{height:150px;}
+  }
+
+  /* ===== FAQ ===== */
+  .faq{max-width:760px;margin:0 auto;}
+  .faq details{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 22px;
+    margin-bottom:12px;
+  }
+  .faq summary{
+    font-weight:700;color:var(--rose-deep);
+    cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:10px;font-size:.96rem;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:"+";
+    font-size:1.3rem;font-weight:400;color:var(--gold);flex-shrink:0;
+    transition:transform .2s ease;
+  }
+  .faq details[open] summary::after{transform:rotate(45deg);}
+  .faq p{color:var(--ink-soft);font-size:.9rem;margin-top:12px;line-height:1.7;}
 </style>
 </head>
 <body>
@@ -525,11 +632,65 @@
 </header>
 
 <nav>
-  <a href="#goi-dau">Gội Đầu</a>
-  <a href="#topping">Topping</a>
-  <a href="#cham-soc-da">Chăm Sóc Da</a>
-  <a href="#body-bung">Body - Bụng</a>
+  <a href="#gioi-thieu">Giới Thiệu</a>
+  <a href="#dich-vu">Dịch Vụ</a>
+  <a href="#goi-dau">Bảng Giá</a>
+  <a href="#thu-vien-anh">Thư Viện Ảnh</a>
+  <a href="#faq">FAQ</a>
+  <a href="#lien-he">Liên Hệ</a>
 </nav>
+
+<section id="gioi-thieu">
+  <div class="section-head">
+    <span class="eyebrow">Câu chuyện</span>
+    <div class="section-title">Giới Thiệu</div>
+    <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm, Quận 6</div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Mộc Nhi là tiệm gội đầu dưỡng sinh tại 1065 Lò Gốm, Phường 7, Quận 6 — nơi khách đến không chỉ để gội đầu, mà để được chăm chút thật sự: từ da đầu, gương mặt, đến vóc dáng.</p>
+      <p>Không gian nhỏ, ấm cúng, riêng tư với rèm ren và ánh đèn vàng dịu — mỗi khách đều được phục vụ tận tay, theo đúng tinh thần "chăm sóc từ tâm" mà tiệm theo đuổi.</p>
+      <ul>
+        <li>📍 1065 Lò Gốm, Phường 7, Quận 6, TP.HCM</li>
+        <li>🕒 Mở cửa 9:30 – 20:30 tất cả các ngày trong tuần</li>
+        <li>📞 0909 933 141</li>
+      </ul>
+    </div>
+    <div class="about-photos">
+      <img src="photos-web/hero-interior.jpg" alt="Không gian bên trong tiệm Mộc Nhi">
+      <img src="photos-web/storefront-sign.jpg" alt="Bảng hiệu tiệm Mộc Nhi ban đêm">
+      <img src="photos-web/storefront-street.jpg" alt="Mặt tiền tiệm Mộc Nhi, 1065 Lò Gốm">
+    </div>
+  </div>
+</section>
+
+<section id="dich-vu">
+  <div class="section-head">
+    <span class="eyebrow">Nổi bật</span>
+    <div class="section-title">Dịch Vụ Nổi Bật</div>
+    <div class="section-sub">3 nhóm dịch vụ chính tại Mộc Nhi</div>
+  </div>
+  <div class="service-highlights">
+    <div class="service-card">
+      <div class="service-icon">💆‍♀️</div>
+      <h3>Gội Đầu Dưỡng Sinh</h3>
+      <p>6 combo từ 30–75 phút, giá từ 79.000đ — giảm mỏi cổ vai gáy, sạch gàu, da đầu khỏe mạnh.</p>
+      <a href="#goi-dau">Xem bảng giá →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌷</div>
+      <h3>Chăm Sóc Da</h3>
+      <p>Làm sạch sâu, lấy nhân mụn chuẩn y khoa, sáng da căng bóng — 3 combo từ 119.000đ.</p>
+      <a href="#cham-soc-da">Xem bảng giá →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌸</div>
+      <h3>Body - Bụng</h3>
+      <p>Massage toàn thân giảm đau mỏi, chăm sóc bụng giảm lạnh bụng — thư giãn trọn vẹn sau 60 phút.</p>
+      <a href="#body-bung">Xem bảng giá →</a>
+    </div>
+  </div>
+</section>
 
 <section id="goi-dau">
   <div class="section-head">
@@ -821,7 +982,57 @@
   </div>
 </section>
 
-<footer>
+<section id="thu-vien-anh">
+  <div class="section-head">
+    <span class="eyebrow">Hình ảnh</span>
+    <div class="section-title">Thư Viện Ảnh</div>
+    <div class="section-sub">Không gian và dịch vụ thực tế tại Mộc Nhi</div>
+  </div>
+  <div class="gallery-grid">
+    <img src="photos-web/hero-interior.jpg" alt="Khách trải nghiệm gội đầu dưỡng sinh tại Mộc Nhi">
+    <img src="photos-web/skincare.jpg" alt="Chăm sóc da mặt tại Mộc Nhi">
+    <img src="photos-web/body-massage.jpg" alt="Massage body dưỡng sinh tại Mộc Nhi">
+    <img src="photos-web/storefront-sign.jpg" alt="Bảng hiệu Mộc Nhi ban đêm">
+    <img src="photos-web/storefront-street.jpg" alt="Mặt tiền tiệm Mộc Nhi Lò Gốm">
+    <img src="photos-web/banner.jpg" alt="Mộc Nhi - Gội đầu, thư giãn, chăm sóc từ tâm">
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-head">
+    <span class="eyebrow">Giải đáp</span>
+    <div class="section-title">Câu Hỏi Thường Gặp</div>
+    <div class="section-sub">Những điều khách hay hỏi trước khi đến Mộc Nhi</div>
+  </div>
+  <div class="faq">
+    <details open>
+      <summary>Tiệm mở cửa giờ nào, có nghỉ ngày nào không?</summary>
+      <p>Mộc Nhi mở cửa từ 9:30 đến 20:30 tất cả các ngày trong tuần, kể cả cuối tuần và lễ (trừ khi có thông báo riêng).</p>
+    </details>
+    <details>
+      <summary>Có cần đặt lịch trước không?</summary>
+      <p>Nên đặt lịch trước qua Zalo, Facebook hoặc gọi 0909 933 141 để được giữ chỗ đúng khung giờ mong muốn, đặc biệt vào cuối tuần. Khách vãng lai vẫn được phục vụ nếu còn chỗ trống.</p>
+    </details>
+    <details>
+      <summary>Giá dịch vụ đã bao gồm gì, có tính thêm tip không?</summary>
+      <p>Giá niêm yết đã bao gồm toàn bộ các bước trong combo. Tip cho nhân viên là tùy tâm, không bắt buộc.</p>
+    </details>
+    <details>
+      <summary>Có chỗ để xe máy không?</summary>
+      <p>Có chỗ để xe ngay trước tiệm tại 1065 Lò Gốm, Phường 7, Quận 6.</p>
+    </details>
+    <details>
+      <summary>Có thể đặt thêm dịch vụ (topping) ngoài combo chính không?</summary>
+      <p>Có. Xem mục Topping trong bảng giá — có thể chọn thêm massage lưng, ủ thảo dược, đắp mặt nạ... cho từng combo gội đầu.</p>
+    </details>
+    <details>
+      <summary>Thanh toán bằng cách nào?</summary>
+      <p>Tiệm nhận tiền mặt và chuyển khoản. Gọi trước qua 0909 933 141 nếu cần thông tin chuyển khoản.</p>
+    </details>
+  </div>
+</section>
+
+<footer id="lien-he">
   <div class="footer-inner">
     <span class="eyebrow">Mộc Nhi</span>
     <h3>Gội Đầu Dưỡng Sinh</h3>
