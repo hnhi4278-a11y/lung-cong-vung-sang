@@ -102,17 +102,26 @@
   }
   .hero-inner{position:relative;max-width:640px;margin:0 auto;}
   .logo-mark{
-    width:84px;height:84px;
+    width:96px;height:96px;
     border-radius:50%;
     background:var(--paper);
-    border:1px solid var(--gold);
     outline:1px solid rgba(199,162,92,.35);
     outline-offset:4px;
     display:flex;align-items:center;justify-content:center;
     margin:0 auto 22px;
-    font-size:34px;
     box-shadow:var(--shadow-md);
+    overflow:hidden;
   }
+  .logo-mark img{width:100%;height:100%;object-fit:cover;}
+  .top-banner{
+    width:100%;
+    max-width:900px;
+    margin:0 auto 32px;
+    border-radius:16px;
+    box-shadow:var(--shadow-lg);
+    overflow:hidden;
+  }
+  .top-banner img{width:100%;display:block;}
   h1.brand{
     font-family:'Cormorant Garamond',serif;
     font-weight:700;
@@ -476,7 +485,10 @@
 
 <header>
   <div class="hero-inner">
-    <div class="logo-mark">🌸</div>
+    <div class="top-banner">
+      <img src="photos-web/banner.jpg" alt="Tiệm Gội Mộc Nhi - Gội đầu, thư giãn, chăm sóc từ tâm - Lò Gốm Quận 6">
+    </div>
+    <div class="logo-mark"><img src="photos-web/logo.png" alt="Logo Tiệm Gội Mộc Nhi"></div>
     <h1 class="brand">Mộc Nhi</h1>
     <div class="subbrand">Gội Đầu Dưỡng Sinh</div>
     <div class="divider"></div>
