@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hnhi4278-a11y.github.io/lung-cong-vung-sang/moc-nhi/sitemap.xml
