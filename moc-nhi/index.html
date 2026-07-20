@@ -38,290 +38,427 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#fbf3ea;
-    --cream2:#f6e9dc;
-    --rose:#c97b8b;
-    --rose-dark:#a85567;
-    --pink:#f3c9d2;
-    --olive:#8a9a5b;
-    --text:#4a3b3b;
-    --white:#fffdf9;
-    --shadow:0 6px 18px rgba(168,85,103,0.12);
+    --cream:#faf5ef;
+    --cream2:#f3e7da;
+    --paper:#fffdfa;
+    --rose:#b8798a;
+    --rose-dark:#8f4a5c;
+    --rose-deep:#6b3341;
+    --blush:#f1d9db;
+    --gold:#c7a25c;
+    --olive:#7c8a54;
+    --ink:#3a2e2c;
+    --ink-soft:#7d6a63;
+    --line:#e9dccb;
+    --shadow-sm:0 2px 10px rgba(111,58,66,.08);
+    --shadow-md:0 10px 30px rgba(111,58,66,.12);
+    --shadow-lg:0 20px 50px rgba(111,58,66,.16);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
     background:var(--cream);
-    color:var(--text);
-    line-height:1.5;
-    padding-bottom:56px;
+    color:var(--ink);
+    line-height:1.6;
+    padding-bottom:64px;
+    -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
 
-  /* Header */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.72rem;font-weight:700;letter-spacing:2.5px;
+    text-transform:uppercase;color:var(--rose-dark);
+  }
+  .eyebrow::before,.eyebrow::after{content:"";width:22px;height:1px;background:var(--gold);}
+
+  /* ===== Header / Hero ===== */
   header{
-    background:linear-gradient(135deg,#fdf0e6 0%,#f9e2e8 100%);
-    padding:36px 20px 28px;
-    text-align:center;
     position:relative;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(199,162,92,.12), transparent 40%),
+      radial-gradient(circle at 90% 15%, rgba(184,121,138,.16), transparent 45%),
+      linear-gradient(180deg,#fdf7f1 0%, var(--cream) 100%);
+    padding:56px 20px 44px;
+    text-align:center;
     overflow:hidden;
-    border-bottom:3px solid var(--pink);
+    border-bottom:1px solid var(--line);
   }
-  header::before, header::after{
-    content:"✿";
-    position:absolute;
-    font-size:60px;
-    color:var(--pink);
-    opacity:.55;
+  header::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle, rgba(199,162,92,.35) 1px, transparent 1.4px);
+    background-size:26px 26px;
+    opacity:.35;
+    pointer-events:none;
   }
-  header::before{top:-10px;left:-10px;}
-  header::after{bottom:-15px;right:-10px;}
-  .logo-circle{
-    width:96px;height:96px;
+  .hero-inner{position:relative;max-width:640px;margin:0 auto;}
+  .logo-mark{
+    width:84px;height:84px;
     border-radius:50%;
-    background:var(--white);
-    border:3px solid var(--rose);
+    background:var(--paper);
+    border:1px solid var(--gold);
+    outline:1px solid rgba(199,162,92,.35);
+    outline-offset:4px;
     display:flex;align-items:center;justify-content:center;
-    margin:0 auto 10px;
-    font-size:42px;
-    box-shadow:var(--shadow);
+    margin:0 auto 22px;
+    font-size:34px;
+    box-shadow:var(--shadow-md);
   }
   h1.brand{
-    font-family:Georgia,'Times New Roman',serif;
-    font-size:2.6rem;
-    color:var(--rose-dark);
-    letter-spacing:2px;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:3.2rem;
+    color:var(--rose-deep);
+    letter-spacing:3px;
+    line-height:1;
   }
   .subbrand{
-    font-size:1.05rem;
-    letter-spacing:4px;
-    color:var(--text);
-    margin-top:4px;
+    font-size:.92rem;
+    letter-spacing:5px;
+    color:var(--ink-soft);
+    margin-top:10px;
     font-weight:600;
+    text-transform:uppercase;
+  }
+  .divider{
+    width:64px;height:1px;
+    background:linear-gradient(90deg,transparent, var(--gold), transparent);
+    margin:20px auto;
   }
   .tagline{
-    margin-top:14px;
+    font-family:'Cormorant Garamond',serif;
     font-style:italic;
-    font-size:1.15rem;
+    font-size:1.35rem;
     color:var(--rose-dark);
+    font-weight:600;
   }
   .benefits{
-    margin:18px auto 0;
-    max-width:420px;
-    text-align:left;
-    display:inline-block;
+    margin:28px 0 0;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
   }
-  .benefits div{margin:6px 0;font-size:.98rem;}
+  .benefit-chip{
+    display:flex;align-items:center;gap:7px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:9px 16px;
+    border-radius:30px;
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--ink);
+    box-shadow:var(--shadow-sm);
+  }
   .badge-price{
-    display:inline-block;
-    margin-top:20px;
-    background:var(--rose-dark);
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:26px;
+    background:linear-gradient(135deg,var(--rose-dark),var(--rose-deep));
     color:#fff;
-    padding:10px 22px;
+    padding:12px 26px;
     border-radius:30px;
     font-weight:700;
-    box-shadow:var(--shadow);
+    font-size:.95rem;
+    letter-spacing:.3px;
+    box-shadow:var(--shadow-md);
   }
   .contact-bar{
-    margin-top:18px;
-    font-size:.95rem;
+    margin-top:22px;
+    font-size:.88rem;
+    color:var(--ink-soft);
     display:flex;
     flex-wrap:wrap;
-    gap:16px;
+    gap:6px 22px;
     justify-content:center;
   }
+  .contact-bar span{display:inline-flex;align-items:center;gap:6px;}
+  .contact-bar svg{flex-shrink:0;}
+
   .cta-row{
-    margin-top:22px;
+    margin-top:28px;
     display:flex;
     gap:12px;
     justify-content:center;
     flex-wrap:wrap;
   }
   .btn{
-    padding:12px 26px;
-    border-radius:30px;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;
+    border-radius:10px;
     font-weight:700;
-    box-shadow:var(--shadow);
+    font-size:.92rem;
+    box-shadow:var(--shadow-sm);
+    transition:transform .15s ease, box-shadow .15s ease;
+    border:1px solid transparent;
   }
-  .btn-primary{background:var(--rose-dark);color:#fff;}
-  .btn-secondary{background:#fff;color:var(--rose-dark);border:2px solid var(--rose-dark);}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .btn svg{flex-shrink:0;}
+  .btn-primary{background:var(--rose-deep);color:#fff;}
+  .btn-secondary{background:transparent;color:var(--rose-deep);border:1px solid var(--rose-deep);box-shadow:none;}
+  .btn-secondary:hover{background:var(--paper);}
   .btn-zalo{background:#0068ff;color:#fff;}
   .btn-fb{background:#1877f2;color:#fff;}
+
   .btn-sticky{
-    position:fixed;bottom:0;left:0;right:0;z-index:20;
-    display:flex;gap:0;
-    box-shadow:0 -4px 14px rgba(0,0,0,0.15);
+    position:fixed;bottom:0;left:0;right:0;z-index:30;
+    display:flex;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    box-shadow:0 -8px 24px rgba(0,0,0,.10);
   }
   .btn-sticky a{
-    flex:1;text-align:center;padding:14px 8px;font-weight:700;font-size:.95rem;
-    border-radius:0;box-shadow:none;
+    flex:1;text-align:center;justify-content:center;
+    padding:15px 6px;font-weight:700;font-size:.82rem;
+    border-radius:0;box-shadow:none;border:none;
   }
-  .btn-sticky .btn-primary{background:var(--rose-dark);}
+  .btn-sticky .btn-primary{background:var(--rose-deep);}
 
-  /* Nav */
+  /* ===== Nav ===== */
   nav{
-    position:sticky;top:0;z-index:10;
-    background:var(--white);
+    position:sticky;top:0;z-index:20;
+    background:rgba(255,253,250,.9);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     display:flex;
     justify-content:center;
-    gap:6px;
-    padding:10px;
+    gap:4px;
+    padding:14px 10px;
     flex-wrap:wrap;
-    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    border-bottom:1px solid var(--line);
   }
   nav a{
-    padding:8px 16px;
-    border-radius:20px;
-    font-size:.9rem;
-    font-weight:600;
-    color:var(--rose-dark);
-    background:var(--cream2);
+    padding:9px 18px;
+    border-radius:24px;
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:.3px;
+    color:var(--rose-deep);
+    transition:background .15s ease, color .15s ease;
   }
-  nav a:hover{background:var(--pink);}
+  nav a:hover{background:var(--blush);}
 
-  /* Sections */
+  /* ===== Sections ===== */
   section{
-    max-width:1100px;
+    max-width:1140px;
     margin:0 auto;
-    padding:40px 20px 10px;
+    padding:64px 20px 8px;
   }
+  .section-head{text-align:center;margin-bottom:40px;}
   .section-title{
-    text-align:center;
-    font-size:1.9rem;
-    color:var(--rose-dark);
-    margin-bottom:6px;
-    font-family:Georgia,serif;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:2.5rem;
+    color:var(--rose-deep);
+    margin-top:10px;
   }
   .section-sub{
-    text-align:center;
-    color:#8a7268;
-    margin-bottom:28px;
-    font-size:.95rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+    font-size:.92rem;
   }
+
   .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
   }
   .card{
-    background:var(--white);
-    border-radius:16px;
-    padding:22px;
-    box-shadow:var(--shadow);
-    border:1px solid var(--cream2);
+    background:var(--paper);
+    border-radius:18px;
+    padding:26px 24px;
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);
     position:relative;
     display:flex;
     flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
   }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold);}
+  .card.best{border-color:var(--gold);box-shadow:var(--shadow-md);}
   .card.best::before{
     content:"★ 80% khách chọn";
     position:absolute;
-    top:-14px;right:16px;
-    background:var(--rose-dark);
+    top:-13px;right:20px;
+    background:linear-gradient(135deg,var(--gold),#a8823f);
     color:#fff;
-    font-size:.72rem;
-    padding:5px 12px;
+    font-size:.68rem;
+    padding:6px 14px;
     border-radius:20px;
     font-weight:700;
+    letter-spacing:.3px;
+    box-shadow:var(--shadow-sm);
+  }
+  .card-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    margin-bottom:6px;
   }
   .card h3{
-    font-size:1.25rem;
-    color:var(--rose-dark);
-    margin-bottom:4px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--rose-deep);
   }
   .card .desc{
     font-size:.85rem;
-    color:#8a7268;
+    color:var(--ink-soft);
     font-style:italic;
-    margin-bottom:12px;
-    border-bottom:1px dashed var(--pink);
-    padding-bottom:10px;
+    margin-bottom:16px;
+    padding-bottom:14px;
+    border-bottom:1px dashed var(--line);
   }
   .card .price{
-    font-size:1.3rem;
+    display:flex;align-items:baseline;gap:8px;
+    font-size:1.4rem;
     font-weight:800;
     color:var(--olive);
-    margin-bottom:14px;
+    margin-bottom:18px;
   }
   .card .price .time{
-    font-size:.85rem;
-    color:var(--text);
-    font-weight:500;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    font-weight:600;
+    background:var(--cream2);
+    padding:3px 10px;
+    border-radius:12px;
   }
-  .card ol, .card ul{
-    padding-left:20px;
-    font-size:.9rem;
-    flex-grow:1;
-  }
-  .card ol li, .card ul li{margin-bottom:5px;}
-  .card ul.no-marker{list-style:none;padding-left:0;}
-  .card ul.no-marker li::before{content:"• ";color:var(--rose);}
 
-  .topping-card ul{columns:1;}
-  .topping-card .group-title{
+  .steps{list-style:none;padding:0;flex-grow:1;counter-reset:step;}
+  .steps li{
+    counter-increment:step;
+    display:flex;gap:12px;
+    font-size:.88rem;
+    padding:7px 0;
+    border-top:1px solid var(--cream2);
+    color:var(--ink);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps li::before{
+    content:counter(step);
+    flex-shrink:0;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--blush);
+    color:var(--rose-deep);
+    font-size:.68rem;
+    font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1px;
+  }
+
+  .topping-list{list-style:none;padding:0;}
+  .topping-list li{
+    display:flex;justify-content:space-between;align-items:center;gap:8px;
+    font-size:.88rem;
+    padding:8px 0;
+    border-top:1px solid var(--cream2);
+  }
+  .topping-list li:first-child{border-top:none;}
+  .topping-list li .k{
+    color:var(--olive);font-weight:800;white-space:nowrap;
+    background:#eef1e4;padding:3px 10px;border-radius:10px;font-size:.8rem;
+  }
+  .group-title{
     font-weight:700;
-    color:var(--rose-dark);
-    margin:10px 0 4px;
-    font-size:.85rem;
+    color:var(--rose-deep);
+    margin:18px 0 6px;
+    font-size:.75rem;
     text-transform:uppercase;
-    letter-spacing:.5px;
+    letter-spacing:1px;
   }
-  .topping-card li{display:flex;justify-content:space-between;gap:8px;}
-  .topping-card li .k{color:var(--olive);font-weight:700;white-space:nowrap;}
+  .group-title:first-child{margin-top:0;}
 
-  .body-step{
-    font-size:.9rem;
-    margin-bottom:10px;
+  .body-step{font-size:.88rem;margin-bottom:16px;}
+  .body-step:last-child{margin-bottom:0;}
+  .body-step .step-label{
+    display:flex;align-items:center;gap:10px;
+    font-weight:700;color:var(--rose-deep);margin-bottom:6px;
   }
-  .body-step strong{color:var(--rose-dark);}
-  .body-step ul{padding-left:18px;margin-top:4px;color:#5a4a4a;}
+  .body-step .step-num{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--rose-deep);color:#fff;
+    font-size:.72rem;font-weight:800;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .body-step ul{padding-left:32px;color:var(--ink-soft);list-style:disc;}
+  .body-step ul li{margin-bottom:3px;}
 
+  /* ===== Footer ===== */
   footer{
-    margin-top:50px;
-    background:var(--rose-dark);
-    color:#fff;
-    text-align:center;
-    padding:34px 20px;
+    margin-top:76px;
+    background:linear-gradient(180deg,var(--rose-deep),#5a2a37);
+    color:#fdf3f0;
+    padding:52px 20px 36px;
   }
-  footer h3{font-size:1.4rem;margin-bottom:10px;}
-  footer .info{margin:6px 0;font-size:.95rem;}
-  footer .btn{margin-top:16px;}
-  .footer-btn{
-    background:#fff;color:var(--rose-dark);
-    display:inline-block;margin-top:16px;
+  .footer-inner{max-width:640px;margin:0 auto;text-align:center;}
+  footer .eyebrow{color:#e9c9c2;}
+  footer .eyebrow::before,footer .eyebrow::after{background:var(--gold);}
+  footer h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.9rem;font-weight:700;
+    margin-top:10px;
+    letter-spacing:1px;
+  }
+  footer .info-row{
+    margin-top:22px;
+    display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;
+    font-size:.9rem;color:#f1dad5;
+  }
+  footer .info-row span{display:inline-flex;align-items:center;gap:7px;}
+  footer .cta-row{margin-top:28px;}
+  .footer-btn{background:#fff;color:var(--rose-deep);}
+  footer .copyright{
+    margin-top:36px;padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.15);
+    font-size:.75rem;color:#dcb7b0;letter-spacing:.3px;
   }
 
   @media (max-width:480px){
-    h1.brand{font-size:2rem;}
-    .contact-bar{flex-direction:column;gap:6px;}
+    h1.brand{font-size:2.4rem;}
+    .section-title{font-size:2rem;}
+    header{padding:44px 16px 36px;}
+    section{padding:48px 16px 8px;}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-circle">🌸</div>
-  <h1 class="brand">MỘC NHI</h1>
-  <div class="subbrand">GỘI ĐẦU DƯỠNG SINH</div>
-  <div class="tagline">💗 Chăm chút từ da đầu đến cảm xúc 💗</div>
-  <div class="benefits">
-    <div>🧑 Giảm mỏi cổ vai gáy</div>
-    <div>🌿 Sạch gàu – mát da đầu</div>
-    <div>✨ Da sáng – tóc mượt</div>
-  </div>
-  <div class="badge-price">🔥 Trải nghiệm chỉ từ 79.000đ</div>
-  <div class="contact-bar">
-    <span>📍 1065 Lò Gốm, P7, Q6</span>
-    <span>🕒 9:30 – 20:30</span>
-    <span>📞 0909 933 141</span>
-  </div>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="tel:0909933141">📞 Gọi đặt lịch</a>
-    <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
-    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
-    <a class="btn btn-secondary" href="#goi-dau">Xem menu</a>
+  <div class="hero-inner">
+    <div class="logo-mark">🌸</div>
+    <h1 class="brand">Mộc Nhi</h1>
+    <div class="subbrand">Gội Đầu Dưỡng Sinh</div>
+    <div class="divider"></div>
+    <div class="tagline">Chăm chút từ da đầu đến cảm xúc</div>
+
+    <div class="benefits">
+      <span class="benefit-chip">🧑 Giảm mỏi cổ vai gáy</span>
+      <span class="benefit-chip">🌿 Sạch gàu – mát da đầu</span>
+      <span class="benefit-chip">✨ Da sáng – tóc mượt</span>
+    </div>
+
+    <div class="badge-price">🔥 Trải nghiệm chỉ từ 79.000đ</div>
+
+    <div class="contact-bar">
+      <span>📍 1065 Lò Gốm, P7, Q6</span>
+      <span>🕒 9:30 – 20:30</span>
+      <span>📞 0909 933 141</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="tel:0909933141">📞 Gọi đặt lịch</a>
+      <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
+      <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
+      <a class="btn btn-secondary" href="#goi-dau">Xem menu</a>
+    </div>
   </div>
 </header>
 
@@ -333,15 +470,18 @@
 </nav>
 
 <section id="goi-dau">
-  <div class="section-title">💆‍♀️ Gội Đầu</div>
-  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="section-head">
+    <span class="eyebrow">Dịch vụ</span>
+    <div class="section-title">Gội Đầu</div>
+    <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm, Quận 6</div>
+  </div>
   <div class="cards">
 
     <div class="card">
-      <h3>🌀 Bận Rộn</h3>
+      <div class="card-head"><h3>Bận Rộn</h3></div>
       <div class="desc">Gội nhanh - Sạch - Thư giãn nhẹ</div>
-      <div class="price">79.000đ <span class="time">/ 30 phút</span></div>
-      <ol>
+      <div class="price">79.000đ <span class="time">30 phút</span></div>
+      <ol class="steps">
         <li>Khai huyệt mặt lưu thông khí huyết</li>
         <li>Tẩy trang/rửa mặt</li>
         <li>Massage mặt</li>
@@ -354,10 +494,10 @@
     </div>
 
     <div class="card">
-      <h3>😌 Thảnh Thơi</h3>
+      <div class="card-head"><h3>Thảnh Thơi</h3></div>
       <div class="desc">Giảm mỏi cổ vai gáy hiệu quả</div>
-      <div class="price">129.000đ <span class="time">/ 45 phút</span></div>
-      <ol>
+      <div class="price">129.000đ <span class="time">45 phút</span></div>
+      <ol class="steps">
         <li>Chườm chân + đeo đai dưỡng sinh</li>
         <li>Khai huyệt mặt lưu thông khí huyết</li>
         <li>Thư giãn cổ vai gáy chuyên sâu</li>
@@ -373,10 +513,10 @@
     </div>
 
     <div class="card">
-      <h3>🍃 Thanh Lọc</h3>
+      <div class="card-head"><h3>Thanh Lọc</h3></div>
       <div class="desc">Detox da đầu - Sạch sâu thoáng mát</div>
-      <div class="price">139.000đ <span class="time">/ 55 phút</span></div>
-      <ol>
+      <div class="price">139.000đ <span class="time">55 phút</span></div>
+      <ol class="steps">
         <li>Chườm chân + đeo đai dưỡng sinh</li>
         <li>Khai huyệt mặt</li>
         <li>Tẩy trang/rửa mặt</li>
@@ -393,10 +533,10 @@
     </div>
 
     <div class="card">
-      <h3>✨ Chăm Sóc</h3>
+      <div class="card-head"><h3>Chăm Sóc</h3></div>
       <div class="desc">Da sáng - Tóc mượt - Relax tối đa</div>
-      <div class="price">159.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">159.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Chườm chân + đeo đai dưỡng sinh</li>
         <li>Khai huyệt mặt lưu thông khí huyết</li>
         <li>Tẩy trang/rửa mặt</li>
@@ -413,10 +553,10 @@
     </div>
 
     <div class="card">
-      <h3>🧴 Mềm Mượt</h3>
+      <div class="card-head"><h3>Mềm Mượt</h3></div>
       <div class="desc">Combo nhẹ nhàng cho lần đầu trải nghiệm</div>
-      <div class="price">148.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">148.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Khai huyệt mặt lưu thông khí huyết</li>
         <li>Tẩy trang/rửa mặt</li>
         <li>Massage mặt</li>
@@ -429,10 +569,10 @@
     </div>
 
     <div class="card best">
-      <h3>⭐ Dưỡng Sinh</h3>
+      <div class="card-head"><h3>Dưỡng Sinh</h3></div>
       <div class="desc">Best seller – khách làm 1 lần là ghiền</div>
-      <div class="price">249.000đ <span class="time">/ 75 phút</span></div>
-      <ol>
+      <div class="price">249.000đ <span class="time">75 phút</span></div>
+      <ol class="steps">
         <li>Massage lưng khô + cổ vai gáy úp</li>
         <li>Massage CVG úp bằng khăn nóng</li>
         <li>Đeo đai dưỡng sinh + chườm ẩm chân</li>
@@ -457,13 +597,16 @@
 </section>
 
 <section id="topping">
-  <div class="section-title">🎯 Topping</div>
-  <div class="section-sub">Combo thêm – relax gấp đôi</div>
+  <div class="section-head">
+    <span class="eyebrow">Thêm trải nghiệm</span>
+    <div class="section-title">Topping</div>
+    <div class="section-sub">Combo thêm – relax gấp đôi</div>
+  </div>
   <div class="cards">
-    <div class="card topping-card">
+    <div class="card">
       <div class="group-title">Thư giãn thêm</div>
-      <ul class="no-marker">
-        <li>Massage lưng/cổ vai gáy úp 20p <span class="k">99k</span></li>
+      <ul class="topping-list">
+        <li>Massage lưng/cổ vai gáy úp 20 phút <span class="k">99k</span></li>
         <li>Ủ nóng thảo dược bụng <span class="k">30k</span></li>
         <li>Ủ nóng thảo dược chân <span class="k">30k</span></li>
         <li>Ủ nóng thảo dược mắt <span class="k">20k</span></li>
@@ -471,7 +614,7 @@
         <li>Massage mặt nâng cao thêm <span class="k">30k</span></li>
       </ul>
       <div class="group-title">Chăm da &amp; chân</div>
-      <ul class="no-marker">
+      <ul class="topping-list">
         <li>Đắp mặt nạ sáng da <span class="k">30k</span></li>
         <li>Tẩy da chết da mặt mịn da <span class="k">30k</span></li>
         <li>Tẩy da chết da đầu ngăn gàu khoẻ tóc <span class="k">49k</span></li>
@@ -484,15 +627,18 @@
 </section>
 
 <section id="cham-soc-da">
-  <div class="section-title">🌷 Chăm Sóc Da</div>
-  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="section-head">
+    <span class="eyebrow">Dịch vụ</span>
+    <div class="section-title">Chăm Sóc Da</div>
+    <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm, Quận 6</div>
+  </div>
   <div class="cards">
 
     <div class="card">
-      <h3>🥰 Yêu Chiều</h3>
+      <div class="card-head"><h3>Yêu Chiều</h3></div>
       <div class="desc">Làm sạch sâu – da mềm mịn tức thì</div>
-      <div class="price">119.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">119.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Tẩy trang</li>
         <li>Xông hơi</li>
         <li>Rửa mặt</li>
@@ -510,10 +656,10 @@
     </div>
 
     <div class="card">
-      <h3>🔥 Mụn</h3>
+      <div class="card-head"><h3>Mụn</h3></div>
       <div class="desc">Lấy nhân mụn chuẩn y khoa – hạn chế thâm</div>
-      <div class="price">159.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">159.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Tẩy trang</li>
         <li>Xông hơi</li>
         <li>Rửa mặt</li>
@@ -535,10 +681,10 @@
     </div>
 
     <div class="card">
-      <h3>💎 Sáng Mịn</h3>
+      <div class="card-head"><h3>Sáng Mịn</h3></div>
       <div class="desc">Combo cao cấp cho làn da đều màu, căng bóng</div>
-      <div class="price">299.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">299.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Tẩy trang</li>
         <li>Xông hơi</li>
         <li>Rửa mặt</li>
@@ -560,30 +706,33 @@
 </section>
 
 <section id="body-bung">
-  <div class="section-title">🌸 Body - Bụng</div>
-  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="section-head">
+    <span class="eyebrow">Dịch vụ</span>
+    <div class="section-title">Body - Bụng</div>
+    <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm, Quận 6</div>
+  </div>
   <div class="cards">
 
     <div class="card">
-      <h3>🧘‍♀️ Dưỡng Sinh</h3>
+      <div class="card-head"><h3>Dưỡng Sinh</h3></div>
       <div class="desc">Giảm đau mỏi – thư giãn toàn thân sau 1 buổi</div>
-      <div class="price">249.000đ <span class="time">/ 60 phút</span></div>
+      <div class="price">249.000đ <span class="time">60 phút</span></div>
       <div class="body-step">
-        <strong>1. Khởi động – Làm nóng cơ thể</strong>
+        <div class="step-label"><span class="step-num">1</span> Khởi động – Làm nóng cơ thể</div>
         <ul>
           <li>Dùng khăn nóng &amp; tinh dầu</li>
           <li>Xoa bóp nhẹ vùng lưng – vai – cổ để giãn cơ, kích hoạt tuần hoàn</li>
         </ul>
       </div>
       <div class="body-step">
-        <strong>2. Massage body + đá nóng chuyên sâu</strong>
+        <div class="step-label"><span class="step-num">2</span> Massage body + đá nóng chuyên sâu</div>
         <ul>
           <li>Dùng đá nóng di chuyển theo huyệt đạo lưng – eo – chân</li>
           <li>Kết hợp kỹ thuật day ấn – miết sâu, giảm nhức mỏi, lưu thông khí huyết</li>
         </ul>
       </div>
       <div class="body-step">
-        <strong>3. Massage đầu – vai – cổ – tay</strong>
+        <div class="step-label"><span class="step-num">3</span> Massage đầu – vai – cổ – tay</div>
         <ul>
           <li>Bấm huyệt thư giãn, giảm áp lực vùng căng cơ</li>
           <li>Kết thúc bằng vuốt nhẹ giúp khách thả lỏng hoàn toàn</li>
@@ -592,10 +741,10 @@
     </div>
 
     <div class="card">
-      <h3>🌺 Chăm Sóc Tử Cung</h3>
+      <div class="card-head"><h3>Chăm Sóc Tử Cung</h3></div>
       <div class="desc">Giảm lạnh bụng – hỗ trợ tiêu hoá tốt hơn</div>
-      <div class="price">289.000đ <span class="time">/ 60 phút</span></div>
-      <ol>
+      <div class="price">289.000đ <span class="time">60 phút</span></div>
+      <ol class="steps">
         <li>Khởi động huyệt vùng bụng</li>
         <li>Massage ấn huyệt vùng bụng và tử cung</li>
         <li>Massage đá nóng thư giãn</li>
@@ -609,14 +758,20 @@
 </section>
 
 <footer>
-  <h3>MỘC NHI — Gội Đầu Dưỡng Sinh</h3>
-  <div class="info">📍 1065 Lò Gốm, P7, Q6</div>
-  <div class="info">🕒 9:30 – 20:30 (mỗi ngày)</div>
-  <div class="info">📞 0909 933 141</div>
-  <div class="cta-row">
-    <a class="btn footer-btn" href="tel:0909933141">📞 Gọi đặt lịch</a>
-    <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
-    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
+  <div class="footer-inner">
+    <span class="eyebrow">Mộc Nhi</span>
+    <h3>Gội Đầu Dưỡng Sinh</h3>
+    <div class="info-row">
+      <span>📍 1065 Lò Gốm, P7, Q6</span>
+      <span>🕒 9:30 – 20:30 (mỗi ngày)</span>
+      <span>📞 0909 933 141</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn footer-btn" href="tel:0909933141">📞 Gọi đặt lịch</a>
+      <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
+      <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
+    </div>
+    <div class="copyright">© 2026 Mộc Nhi — Gội Đầu Dưỡng Sinh, Quận 6</div>
   </div>
 </footer>
 
