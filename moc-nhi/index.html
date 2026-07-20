@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mộc Nhi - Gội Đầu Dưỡng Sinh | Bảng Giá</title>
+<style>
+  :root{
+    --cream:#fbf3ea;
+    --cream2:#f6e9dc;
+    --rose:#c97b8b;
+    --rose-dark:#a85567;
+    --pink:#f3c9d2;
+    --olive:#8a9a5b;
+    --text:#4a3b3b;
+    --white:#fffdf9;
+    --shadow:0 6px 18px rgba(168,85,103,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.5;
+    padding-bottom:56px;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* Header */
+  header{
+    background:linear-gradient(135deg,#fdf0e6 0%,#f9e2e8 100%);
+    padding:36px 20px 28px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    border-bottom:3px solid var(--pink);
+  }
+  header::before, header::after{
+    content:"✿";
+    position:absolute;
+    font-size:60px;
+    color:var(--pink);
+    opacity:.55;
+  }
+  header::before{top:-10px;left:-10px;}
+  header::after{bottom:-15px;right:-10px;}
+  .logo-circle{
+    width:96px;height:96px;
+    border-radius:50%;
+    background:var(--white);
+    border:3px solid var(--rose);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 10px;
+    font-size:42px;
+    box-shadow:var(--shadow);
+  }
+  h1.brand{
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:2.6rem;
+    color:var(--rose-dark);
+    letter-spacing:2px;
+  }
+  .subbrand{
+    font-size:1.05rem;
+    letter-spacing:4px;
+    color:var(--text);
+    margin-top:4px;
+    font-weight:600;
+  }
+  .tagline{
+    margin-top:14px;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--rose-dark);
+  }
+  .benefits{
+    margin:18px auto 0;
+    max-width:420px;
+    text-align:left;
+    display:inline-block;
+  }
+  .benefits div{margin:6px 0;font-size:.98rem;}
+  .badge-price{
+    display:inline-block;
+    margin-top:20px;
+    background:var(--rose-dark);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    box-shadow:var(--shadow);
+  }
+  .contact-bar{
+    margin-top:18px;
+    font-size:.95rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+  }
+  .cta-row{
+    margin-top:22px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    padding:12px 26px;
+    border-radius:30px;
+    font-weight:700;
+    box-shadow:var(--shadow);
+  }
+  .btn-primary{background:var(--rose-dark);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--rose-dark);border:2px solid var(--rose-dark);}
+  .btn-zalo{background:#0068ff;color:#fff;}
+  .btn-fb{background:#1877f2;color:#fff;}
+  .btn-sticky{
+    position:fixed;bottom:0;left:0;right:0;z-index:20;
+    display:flex;gap:0;
+    box-shadow:0 -4px 14px rgba(0,0,0,0.15);
+  }
+  .btn-sticky a{
+    flex:1;text-align:center;padding:14px 8px;font-weight:700;font-size:.95rem;
+    border-radius:0;box-shadow:none;
+  }
+  .btn-sticky .btn-primary{background:var(--rose-dark);}
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:var(--white);
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:10px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  }
+  nav a{
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--rose-dark);
+    background:var(--cream2);
+  }
+  nav a:hover{background:var(--pink);}
+
+  /* Sections */
+  section{
+    max-width:1100px;
+    margin:0 auto;
+    padding:40px 20px 10px;
+  }
+  .section-title{
+    text-align:center;
+    font-size:1.9rem;
+    color:var(--rose-dark);
+    margin-bottom:6px;
+    font-family:Georgia,serif;
+  }
+  .section-sub{
+    text-align:center;
+    color:#8a7268;
+    margin-bottom:28px;
+    font-size:.95rem;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--cream2);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .card.best::before{
+    content:"★ 80% khách chọn";
+    position:absolute;
+    top:-14px;right:16px;
+    background:var(--rose-dark);
+    color:#fff;
+    font-size:.72rem;
+    padding:5px 12px;
+    border-radius:20px;
+    font-weight:700;
+  }
+  .card h3{
+    font-size:1.25rem;
+    color:var(--rose-dark);
+    margin-bottom:4px;
+  }
+  .card .desc{
+    font-size:.85rem;
+    color:#8a7268;
+    font-style:italic;
+    margin-bottom:12px;
+    border-bottom:1px dashed var(--pink);
+    padding-bottom:10px;
+  }
+  .card .price{
+    font-size:1.3rem;
+    font-weight:800;
+    color:var(--olive);
+    margin-bottom:14px;
+  }
+  .card .price .time{
+    font-size:.85rem;
+    color:var(--text);
+    font-weight:500;
+  }
+  .card ol, .card ul{
+    padding-left:20px;
+    font-size:.9rem;
+    flex-grow:1;
+  }
+  .card ol li, .card ul li{margin-bottom:5px;}
+  .card ul.no-marker{list-style:none;padding-left:0;}
+  .card ul.no-marker li::before{content:"• ";color:var(--rose);}
+
+  .topping-card ul{columns:1;}
+  .topping-card .group-title{
+    font-weight:700;
+    color:var(--rose-dark);
+    margin:10px 0 4px;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .topping-card li{display:flex;justify-content:space-between;gap:8px;}
+  .topping-card li .k{color:var(--olive);font-weight:700;white-space:nowrap;}
+
+  .body-step{
+    font-size:.9rem;
+    margin-bottom:10px;
+  }
+  .body-step strong{color:var(--rose-dark);}
+  .body-step ul{padding-left:18px;margin-top:4px;color:#5a4a4a;}
+
+  footer{
+    margin-top:50px;
+    background:var(--rose-dark);
+    color:#fff;
+    text-align:center;
+    padding:34px 20px;
+  }
+  footer h3{font-size:1.4rem;margin-bottom:10px;}
+  footer .info{margin:6px 0;font-size:.95rem;}
+  footer .btn{margin-top:16px;}
+  .footer-btn{
+    background:#fff;color:var(--rose-dark);
+    display:inline-block;margin-top:16px;
+  }
+
+  @media (max-width:480px){
+    h1.brand{font-size:2rem;}
+    .contact-bar{flex-direction:column;gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-circle">🌸</div>
+  <h1 class="brand">MỘC NHI</h1>
+  <div class="subbrand">GỘI ĐẦU DƯỠNG SINH</div>
+  <div class="tagline">💗 Chăm chút từ da đầu đến cảm xúc 💗</div>
+  <div class="benefits">
+    <div>🧑 Giảm mỏi cổ vai gáy</div>
+    <div>🌿 Sạch gàu – mát da đầu</div>
+    <div>✨ Da sáng – tóc mượt</div>
+  </div>
+  <div class="badge-price">🔥 Trải nghiệm chỉ từ 79.000đ</div>
+  <div class="contact-bar">
+    <span>📍 1065 Lò Gốm, P7, Q6</span>
+    <span>🕒 9:30 – 20:30</span>
+    <span>📞 0909 933 141</span>
+  </div>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="tel:0909933141">📞 Gọi đặt lịch</a>
+    <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
+    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
+    <a class="btn btn-secondary" href="#goi-dau">Xem menu</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#goi-dau">Gội Đầu</a>
+  <a href="#topping">Topping</a>
+  <a href="#cham-soc-da">Chăm Sóc Da</a>
+  <a href="#body-bung">Body - Bụng</a>
+</nav>
+
+<section id="goi-dau">
+  <div class="section-title">💆‍♀️ Gội Đầu</div>
+  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="cards">
+
+    <div class="card">
+      <h3>🌀 Bận Rộn</h3>
+      <div class="desc">Gội nhanh - Sạch - Thư giãn nhẹ</div>
+      <div class="price">79.000đ <span class="time">/ 30 phút</span></div>
+      <ol>
+        <li>Khai huyệt mặt lưu thông khí huyết</li>
+        <li>Tẩy trang/rửa mặt</li>
+        <li>Massage mặt</li>
+        <li>Hút mụn + phun hoa hồng</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Xả tóc mềm mượt</li>
+        <li>Massage đầu/tay</li>
+        <li>Xịt dưỡng và sấy tóc</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>😌 Thảnh Thơi</h3>
+      <div class="desc">Giảm mỏi cổ vai gáy hiệu quả</div>
+      <div class="price">129.000đ <span class="time">/ 45 phút</span></div>
+      <ol>
+        <li>Chườm chân + đeo đai dưỡng sinh</li>
+        <li>Khai huyệt mặt lưu thông khí huyết</li>
+        <li>Thư giãn cổ vai gáy chuyên sâu</li>
+        <li>Massage tay</li>
+        <li>Tẩy trang/rửa mặt</li>
+        <li>Massage mặt bằng gel nha đam</li>
+        <li>Hút mụn + phun hoa hồng</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Xả tóc mềm mượt</li>
+        <li>Massage đầu chuyên sâu</li>
+        <li>Xịt dưỡng và sấy tóc</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>🍃 Thanh Lọc</h3>
+      <div class="desc">Detox da đầu - Sạch sâu thoáng mát</div>
+      <div class="price">139.000đ <span class="time">/ 55 phút</span></div>
+      <ol>
+        <li>Chườm chân + đeo đai dưỡng sinh</li>
+        <li>Khai huyệt mặt</li>
+        <li>Tẩy trang/rửa mặt</li>
+        <li>Tẩy da chết da mặt + đi máy</li>
+        <li>Massage mặt bằng gel nha đam</li>
+        <li>Hút mụn + phun hoa hồng</li>
+        <li>TBC da đầu + lược detox</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Xả tóc mềm mượt</li>
+        <li>Massage đầu + tay</li>
+        <li>Xối nước thác đổ</li>
+        <li>Xịt dưỡng và sấy tóc</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>✨ Chăm Sóc</h3>
+      <div class="desc">Da sáng - Tóc mượt - Relax tối đa</div>
+      <div class="price">159.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Chườm chân + đeo đai dưỡng sinh</li>
+        <li>Khai huyệt mặt lưu thông khí huyết</li>
+        <li>Tẩy trang/rửa mặt</li>
+        <li>Tẩy tế bào chết da mặt + máy</li>
+        <li>Massage mặt bằng kem + đá thạch anh nâng cơ</li>
+        <li>Hút mụn + phun hoa hồng</li>
+        <li>Đắp mặt nạ dưỡng ẩm phục hồi da sáng + chiếu ánh sáng sinh học</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Xả tóc mềm mượt</li>
+        <li>Massage đầu + tay</li>
+        <li>Xối nước thác đổ</li>
+        <li>Xịt dưỡng + sấy tóc</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>🧴 Mềm Mượt</h3>
+      <div class="desc">Combo nhẹ nhàng cho lần đầu trải nghiệm</div>
+      <div class="price">148.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Khai huyệt mặt lưu thông khí huyết</li>
+        <li>Tẩy trang/rửa mặt</li>
+        <li>Massage mặt</li>
+        <li>Hút mụn + phun hoa hồng</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Xả tóc mềm mượt</li>
+        <li>Massage đầu/tay</li>
+        <li>Xịt dưỡng và sấy tóc</li>
+      </ol>
+    </div>
+
+    <div class="card best">
+      <h3>⭐ Dưỡng Sinh</h3>
+      <div class="desc">Best seller – khách làm 1 lần là ghiền</div>
+      <div class="price">249.000đ <span class="time">/ 75 phút</span></div>
+      <ol>
+        <li>Massage lưng khô + cổ vai gáy úp</li>
+        <li>Massage CVG úp bằng khăn nóng</li>
+        <li>Đeo đai dưỡng sinh + chườm ẩm chân</li>
+        <li>Khai huyệt bằng tinh dầu chải lược</li>
+        <li>Tẩy trang + rửa mặt + hút bã nhờn</li>
+        <li>TBC da mặt + đi máy sủi + xông mặt</li>
+        <li>Massage mặt chuyên sâu bằng kem dưỡng da</li>
+        <li>Đi đá thạch anh thư giãn cơ mặt</li>
+        <li>Đắp mặt nạ</li>
+        <li>TBC da đầu</li>
+        <li>Gội đầu 2 nước</li>
+        <li>Massage cổ vai gáy bọt tuyết</li>
+        <li>Rửa tai bọt tuyết</li>
+        <li>Xả dầu xả mềm mượt tóc</li>
+        <li>Massage đầu</li>
+        <li>Xối nước thác đổ + căng cơ CVG</li>
+        <li>Sấy tóc + xịt dưỡng</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<section id="topping">
+  <div class="section-title">🎯 Topping</div>
+  <div class="section-sub">Combo thêm – relax gấp đôi</div>
+  <div class="cards">
+    <div class="card topping-card">
+      <div class="group-title">Thư giãn thêm</div>
+      <ul class="no-marker">
+        <li>Massage lưng/cổ vai gáy úp 20p <span class="k">99k</span></li>
+        <li>Ủ nóng thảo dược bụng <span class="k">30k</span></li>
+        <li>Ủ nóng thảo dược chân <span class="k">30k</span></li>
+        <li>Ủ nóng thảo dược mắt <span class="k">20k</span></li>
+        <li>Massage lưng ngồi với đá nóng <span class="k">45k</span></li>
+        <li>Massage mặt nâng cao thêm <span class="k">30k</span></li>
+      </ul>
+      <div class="group-title">Chăm da &amp; chân</div>
+      <ul class="no-marker">
+        <li>Đắp mặt nạ sáng da <span class="k">30k</span></li>
+        <li>Tẩy da chết da mặt mịn da <span class="k">30k</span></li>
+        <li>Tẩy da chết da đầu ngăn gàu khoẻ tóc <span class="k">49k</span></li>
+        <li>Ngâm chân + mát xa chân <span class="k">99k</span></li>
+        <li>Mặt nạ mắt <span class="k">15k</span></li>
+        <li>Mặt nạ môi mềm ẩm <span class="k">15k</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="cham-soc-da">
+  <div class="section-title">🌷 Chăm Sóc Da</div>
+  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="cards">
+
+    <div class="card">
+      <h3>🥰 Yêu Chiều</h3>
+      <div class="desc">Làm sạch sâu – da mềm mịn tức thì</div>
+      <div class="price">119.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Tẩy trang</li>
+        <li>Xông hơi</li>
+        <li>Rửa mặt</li>
+        <li>Tẩy da chết da mặt chuyên sâu</li>
+        <li>Hút mụn</li>
+        <li>Phun oxy tươi</li>
+        <li>Massage mặt nâng cơ</li>
+        <li>Đắp mặt nạ dẻo</li>
+        <li>Chiếu đèn sinh học</li>
+        <li>Massage đầu</li>
+        <li>Búa lạnh se khít lỗ chân lông</li>
+        <li>SERUM dưỡng da</li>
+        <li>Kem chống nắng</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Mụn</h3>
+      <div class="desc">Lấy nhân mụn chuẩn y khoa – hạn chế thâm</div>
+      <div class="price">159.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Tẩy trang</li>
+        <li>Xông hơi</li>
+        <li>Rửa mặt</li>
+        <li>Tẩy da chết da mặt chuyên sâu</li>
+        <li>Hút mụn</li>
+        <li>Phun oxy tươi</li>
+        <li>Massage mặt nâng cơ</li>
+        <li>Xác khuẩn da</li>
+        <li>Lấy nhân mụn</li>
+        <li>Xác khuẩn da lần 2</li>
+        <li>Điện di tím</li>
+        <li>Đắp mặt nạ dẻo</li>
+        <li>Chiếu đèn sinh học</li>
+        <li>Massage đầu</li>
+        <li>Búa lạnh se khít lỗ chân lông</li>
+        <li>Chấm mụn + SERUM dưỡng da</li>
+        <li>Kem chống nắng</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>💎 Sáng Mịn</h3>
+      <div class="desc">Combo cao cấp cho làn da đều màu, căng bóng</div>
+      <div class="price">299.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Tẩy trang</li>
+        <li>Xông hơi</li>
+        <li>Rửa mặt</li>
+        <li>Tẩy da chết da mặt chuyên sâu</li>
+        <li>Hút mụn</li>
+        <li>Phun oxy tươi</li>
+        <li>Massage mặt nâng cơ</li>
+        <li>Vi kim / cấy tảo / phi kim</li>
+        <li>Đắp mặt nạ dẻo</li>
+        <li>Chiếu đèn sinh học</li>
+        <li>Massage đầu</li>
+        <li>Búa lạnh se khít lỗ chân lông</li>
+        <li>SERUM dưỡng da</li>
+        <li>Kem chống nắng</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<section id="body-bung">
+  <div class="section-title">🌸 Body - Bụng</div>
+  <div class="section-sub">Tiệm Gội Đầu Mộc Nhi — Lò Gốm Q6</div>
+  <div class="cards">
+
+    <div class="card">
+      <h3>🧘‍♀️ Dưỡng Sinh</h3>
+      <div class="desc">Giảm đau mỏi – thư giãn toàn thân sau 1 buổi</div>
+      <div class="price">249.000đ <span class="time">/ 60 phút</span></div>
+      <div class="body-step">
+        <strong>1. Khởi động – Làm nóng cơ thể</strong>
+        <ul>
+          <li>Dùng khăn nóng &amp; tinh dầu</li>
+          <li>Xoa bóp nhẹ vùng lưng – vai – cổ để giãn cơ, kích hoạt tuần hoàn</li>
+        </ul>
+      </div>
+      <div class="body-step">
+        <strong>2. Massage body + đá nóng chuyên sâu</strong>
+        <ul>
+          <li>Dùng đá nóng di chuyển theo huyệt đạo lưng – eo – chân</li>
+          <li>Kết hợp kỹ thuật day ấn – miết sâu, giảm nhức mỏi, lưu thông khí huyết</li>
+        </ul>
+      </div>
+      <div class="body-step">
+        <strong>3. Massage đầu – vai – cổ – tay</strong>
+        <ul>
+          <li>Bấm huyệt thư giãn, giảm áp lực vùng căng cơ</li>
+          <li>Kết thúc bằng vuốt nhẹ giúp khách thả lỏng hoàn toàn</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🌺 Chăm Sóc Tử Cung</h3>
+      <div class="desc">Giảm lạnh bụng – hỗ trợ tiêu hoá tốt hơn</div>
+      <div class="price">289.000đ <span class="time">/ 60 phút</span></div>
+      <ol>
+        <li>Khởi động huyệt vùng bụng</li>
+        <li>Massage ấn huyệt vùng bụng và tử cung</li>
+        <li>Massage đá nóng thư giãn</li>
+        <li>Xông ngải cứu dưỡng ấm tử cung</li>
+        <li>Massage ấn huyệt vùng đùi và cẳng chân</li>
+        <li>Massage đầu mặt thư giãn</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <h3>MỘC NHI — Gội Đầu Dưỡng Sinh</h3>
+  <div class="info">📍 1065 Lò Gốm, P7, Q6</div>
+  <div class="info">🕒 9:30 – 20:30 (mỗi ngày)</div>
+  <div class="info">📞 0909 933 141</div>
+  <div class="cta-row">
+    <a class="btn footer-btn" href="tel:0909933141">📞 Gọi đặt lịch</a>
+    <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Nhắn Zalo</a>
+    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Nhắn Facebook</a>
+  </div>
+</footer>
+
+<div class="btn-sticky">
+  <a class="btn btn-primary" href="tel:0909933141">📞 Gọi</a>
+  <a class="btn btn-zalo" href="https://zalo.me/0909933141" target="_blank" rel="noopener">💬 Zalo</a>
+  <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61559971155613" target="_blank" rel="noopener">👍 Facebook</a>
+</div>
+
+</body>
+</html>
