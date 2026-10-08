@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định biên ghế có bậc — Vùng Sang</title>
+<style>
+:root{
+  --bg:#0f1115; --card:#171a21; --line:#272c37; --txt:#e8ebf2; --muted:#9aa3b2;
+  --accent:#e0a500; --green:#2ecc71; --red:#ff5d5d; --blue:#4aa3ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.45;padding:16px}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-size:21px;margin:4px 0 2px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+.src{background:#20242e;border:1px solid var(--line);border-radius:10px;
+  padding:10px 12px;font-size:12.5px;color:var(--muted);margin-bottom:18px}
+.src b{color:var(--txt)}
+h2{font-size:16px;margin:22px 0 10px;border-left:3px solid var(--accent);padding-left:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:12px;margin-bottom:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}
+th,td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px}
+td.name,th.name{text-align:left;font-weight:600}
+tr.me td{background:rgba(224,165,0,.10)}
+tr.sum td{font-weight:700;border-top:2px solid var(--line);background:#1b1f28}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11.5px;font-weight:700}
+.cut{background:rgba(255,93,93,.15);color:var(--red)}
+.add{background:rgba(46,204,113,.15);color:var(--green)}
+.ok{background:rgba(154,163,178,.15);color:var(--muted)}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.kpi .n{font-size:24px;font-weight:800}
+.kpi .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+.note{font-size:12.5px;color:var(--muted);margin-top:6px}
+.legend{font-size:12px;color:var(--muted);margin:4px 0 2px}
+.foot{color:var(--muted);font-size:11.5px;margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+@media(max-width:560px){.big{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Định biên ghế có bậc — tập trung Vùng Sang</h1>
+  <div class="sub">Phương án Thăng bậc · Định biên ghế (bản 23/09/2026)</div>
+
+  <div class="src">
+    <b>Nguồn:</b> số liệu đọc từ ảnh cuộc họp (anh Sang GĐKV share màn hình, 06/10/2026)
+    của trang “Phương án Thăng bậc – Định biên ghế”.
+    Bản gốc có đặt mật khẩu nên không kéo tự động được — các con số dưới đây gõ lại từ ảnh.
+    Bảng theo GĐKV trong ảnh <b>bị cắt, chỉ thấy 6/8 vùng</b>; 2 vùng còn lại để trống chờ bổ sung.
+  </div>
+
+  <h2>1 · Toàn hệ — ghế có bậc theo vị trí</h2>
+  <div class="big">
+    <div class="kpi"><div class="n">255</div><div class="l">Ghế CÓ BẬC (định biên)</div></div>
+    <div class="kpi"><div class="n">264</div><div class="l">Hiện đang có bậc</div></div>
+    <div class="kpi"><div class="n">466tr</div><div class="l">Chi phí phần bậc/th</div></div>
+  </div>
+  <div class="card">
+    <table>
+      <tr><th class="name">Vị trí</th><th>L2</th><th>L3</th><th>L4</th><th>L5</th>
+          <th>Có bậc</th><th>Đang có</th><th>Chênh</th><th>Chi phí</th></tr>
+      <tr><td class="name">Stylist · 334 người</td><td>67</td><td>33</td><td>10</td><td>7</td>
+          <td>117</td><td>158</td><td><span class="pill cut">-41</span></td><td>377tr</td></tr>
+      <tr><td class="name">Skinner · 350 người</td><td>70</td><td>35</td><td>10</td><td>7</td>
+          <td>122</td><td>69</td><td><span class="pill add">+53</span></td><td>69tr</td></tr>
+      <tr><td class="name">Supporter · 88 người</td><td>–</td><td>9</td><td>4</td><td>3</td>
+          <td>16</td><td>37</td><td><span class="pill cut">-21</span></td><td>20tr</td></tr>
+      <tr class="sum"><td class="name">Cộng</td><td></td><td></td><td></td><td></td>
+          <td>255</td><td>264</td><td><span class="pill cut">-9</span></td><td>466tr</td></tr>
+    </table>
+    <div class="note">Chênh = định biên (Có bậc) − hiện trạng. Âm = đang dư bậc, phải siết; dương = còn chỗ lên bậc.
+      Quy đổi: mỗi tỷ DT thuần/tháng ≈ 5.3 ghế Stylist, 5.5 ghế Skinner, 0.7 ghế Supporter có bậc.</div>
+  </div>
+
+  <h2>2 · Vùng Sang — định biên ghế có bậc</h2>
+  <div class="big">
+    <div class="kpi"><div class="n">4,83</div><div class="l">DT tỷ/tháng (cao nhất hệ)</div></div>
+    <div class="kpi"><div class="n">26</div><div class="l">Stylist có bậc (định biên)</div></div>
+    <div class="kpi"><div class="n" style="color:var(--red)">−2</div><div class="l">ST phải siết (đang 28)</div></div>
+  </div>
+  <div class="card">
+    <div class="legend">Chi tiết tháp bậc Vùng Sang (L2 / L3 / L4 / L5):</div>
+    <table>
+      <tr><th class="name">Vị trí</th><th>L2</th><th>L3</th><th>L4</th><th>L5</th><th>Định biên có bậc</th></tr>
+      <tr><td class="name">Stylist</td><td>15</td><td>7</td><td>2</td><td>2</td><td>26</td></tr>
+      <tr><td class="name">Skinner</td><td>16</td><td>8</td><td>2</td><td>2</td><td>28</td></tr>
+      <tr><td class="name">Supporter</td><td>–</td><td>2</td><td>1</td><td>1</td><td>4</td></tr>
+    </table>
+    <div class="note">Stylist định biên 26 ghế có bậc, nhưng hiện đang có 28 → <b>cần giảm 2 ghế</b> (siết chặt nhất vì là vùng DT cao, quân số đông).</div>
+  </div>
+
+  <h2>3 · So 6 vùng (Stylist có bậc: định biên vs hiện trạng)</h2>
+  <div class="card">
+    <table>
+      <tr><th class="name">GĐKV</th><th>DT tỷ/th</th><th>ST L2/L3/L4/L5</th>
+          <th>Định biên</th><th>Đang có</th><th>Phải chỉnh</th><th>SK L2/L3/L4/L5</th><th>SUP L3/L4/L5</th></tr>
+      <tr class="me"><td class="name">Sang</td><td>4,83</td><td>15/7/2/2</td><td>26</td><td>28</td>
+          <td><span class="pill cut">-2</span></td><td>16/8/2/2</td><td>2/1/1</td></tr>
+      <tr><td class="name">Đức</td><td>3,20</td><td>10/5/2/1</td><td>18</td><td>16</td>
+          <td><span class="pill add">+2</span></td><td>10/5/2/1</td><td>1/1/1</td></tr>
+      <tr><td class="name">Quyền</td><td>3,19</td><td>10/5/1/1</td><td>17</td><td>23</td>
+          <td><span class="pill cut">-6</span></td><td>10/5/1/1</td><td>2/1/1</td></tr>
+      <tr><td class="name">Cường</td><td>3,14</td><td>9/5/1/1</td><td>16</td><td>37</td>
+          <td><span class="pill cut">-21</span></td><td>10/5/1/1</td><td>1/1/0</td></tr>
+      <tr><td class="name">Gấm</td><td>2,73</td><td>8/4/1/1</td><td>14</td><td>16</td>
+          <td><span class="pill cut">-2</span></td><td>9/4/1/1</td><td>1/0/0</td></tr>
+      <tr><td class="name">Quỳnh</td><td>2,17</td><td>7/3/1/1</td><td>12</td><td>10</td>
+          <td><span class="pill add">+2</span></td><td>7/3/1/1</td><td>1/0/0</td></tr>
+      <tr><td class="name" style="color:var(--muted)">(vùng 7)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="pill ok">chờ</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="name" style="color:var(--muted)">(vùng 8)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="pill ok">chờ</span></td><td>—</td><td>—</td></tr>
+    </table>
+    <div class="note">Cột “Đang có” lấy từ số trong ngoặc ở ảnh (ST CÓ BẬC “26 (28)” → định biên 26, đang 28).
+      Cắt nhiều nhất: <b>Cường −21</b>, <b>Quyền −6</b>. Được nới: Đức, Quỳnh (+2).</div>
+  </div>
+
+  <h2>4 · Vì sao Supporter tính tháp riêng</h2>
+  <div class="card">
+    <div class="note" style="color:var(--txt)">
+      Mỗi cụm chỉ 26–35 Supporter, trong khi Stylist/Skinner 33–153 người/cụm.
+      Với quân số đó, ngưỡng Top 5% và Top 2% đều chỉ ra đúng 1 người nhất cụm → Level 4 và Level 5 không phân biệt được.
+      Tháp riêng dùng ngưỡng thưa hơn, để mỗi cụm có 5–7 / 3–4 / 1–2 người đủ lên Level 3 / 4 / 5.
+      Bậc nền (Level 1 và dưới) không giới hạn số người; với Supporter bậc nền gồm Level 1 + Level 2.
+    </div>
+  </div>
+
+  <div class="foot">
+    Trang riêng dựng cho nội bộ · số liệu gõ lại từ ảnh họp 06/10/2026, có thể sai lệch 1 vài con số do đọc ảnh.
+    Nếu có mật khẩu bản gốc, gửi lại để cập nhật đủ 8 vùng và đối chiếu chính xác.
+  </div>
+
+</div>
+</body>
+</html>
