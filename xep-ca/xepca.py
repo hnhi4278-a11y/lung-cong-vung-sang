@@ -51,7 +51,11 @@ THU={'T2':'THỨ 2','T3':'THỨ 3','T4':'THỨ 4','T5':'THỨ 5','T6':'THỨ 6',
 def post(tab,rng,vals):
     d=json.dumps({'token':os.environ['BRIDGE_TOKEN'],'id':SSID,'sheet':tab,'range':rng,'values':vals}).encode()
     r=urllib.request.Request(BRIDGE,data=d,headers={'Content-Type':'application/json'},method='POST')
-    return urllib.request.urlopen(r,timeout=30).read().decode()[:30]
+    import time
+    for i in range(8):
+        try: return urllib.request.urlopen(r,timeout=60).read().decode()[:30]
+        except Exception as e: err=str(e); time.sleep(2*(i+1))
+    raise RuntimeError('bridge loi: '+err)
 def run(monday,off,write=False):
     """monday: date; off: {'T2':{'s':[ten day du],'k':[...]},...}"""
     bd=get(1117803095); sty,ski=rank_lists(bd)
